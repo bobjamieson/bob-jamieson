@@ -1,0 +1,26 @@
+@use './fonts.module.scss';
+@use './colours.module.scss';
+
+@font-face {
+  font-family: 'Shrimp';
+  src: url('../fonts/SHRIMP.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
