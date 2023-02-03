@@ -1,22 +1,22 @@
 @import 'src/styles/theme.module.scss';
 
+.Hero {
+  margin-bottom: 200px;
+}
+
 .HeroImage {
   display: flex;
   justify-content: center;
 
   &__Image {
-    padding-top: 50px;
-    width: 100%;
+    padding-top: 150px;
+    width: 90%;
     height: auto;
-    max-width: 747px;
+    max-width: 550px;
     transition: all 0.2s ease-in-out;
 
     @include mq('sm') {
-      padding-top: 150px;
-    }
-
-    @include mq('md') {
-      padding-top: 200px;
+      width: 100%;
     }
   }
 }
@@ -26,13 +26,13 @@
   margin-top: -3.6%;
 
   @include mq('md') {
-    margin-top: -33px;
+    margin-top: -25px;
   }
 }
 
 .HeroText {
   margin: 15px auto 0 auto;
-  width: 730px;
+  max-width: 550px;
 
   @include mq('sm') {
     margin-top: 25px;
@@ -48,12 +48,14 @@
     color: $link-grey;
     text-decoration: underline;
     text-underline-offset: 3px;
+    font-size: 3vw;
 
     &:hover {
       color: $colour-orange;
     }
 
-    @include mq('sm') {
+    @include mq('md') {
+      font-size: 15px;
     }
   }
 }

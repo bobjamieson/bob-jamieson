@@ -1,6 +1,7 @@
 import styles from './Hero.module.scss'
 import RandomColour from '@/src/utils/RandomColour'
 import PrimaryNav from '../PrimaryNav/PrimaryNav.component'
+import Link from 'next/link'
 
 // Image imports
 import Image from 'next/image'
@@ -8,10 +9,10 @@ import heroImage from 'public/images/hero-image.png'
 
 const Hero = () => {
   return (
-    <>
+    <div className={styles.Hero}>
+      {/* Primary Nav */}
+      <PrimaryNav />
       <div className='container'>
-        {/* Primary Nav */}
-        <PrimaryNav />
         {/* Hero image */}
         <div className={styles.HeroImage}>
           <Image
@@ -37,12 +38,12 @@ const Hero = () => {
               <span>Bob.</span>
             </RandomColour>
           </h1>
-          <a href='#' className={styles.HeroText__link}>
+          <Link href='/about' className={styles.HeroText__link}>
             Other things.
-          </a>
+          </Link>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

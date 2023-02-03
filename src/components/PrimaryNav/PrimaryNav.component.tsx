@@ -6,11 +6,12 @@ import logo from 'public/logo.svg'
 const PrimaryNav = () => {
   return (
     // Imported to Hero.component
-    <>
-      <div className={styles.PrimaryNav}>
+
+    <div className={styles.PrimaryNav}>
+      <div className='container'>
         <Image src={logo} alt='logo' className={styles.Logo} />
       </div>
-    </>
+    </div>
   )
 }
 

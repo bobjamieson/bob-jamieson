@@ -2,18 +2,14 @@
 
 .h1 {
   font-family: Shrimp;
-  font-size: 7vw;
-  letter-spacing: 0.1em;
+  font-size: 8vw;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  line-height: 7vw;
-
-  @include mq('sm') {
-    font-size: 8vw;
-    line-height: 8vw;
-  }
+  line-height: 9vw;
 
   @include mq('md') {
-    font-size: 4em;
-    line-height: 75px;
+    font-size: 3em;
+    line-height: 50px;
+    letter-spacing: 0.1em;
   }
 }
