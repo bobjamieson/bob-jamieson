@@ -1,53 +1,52 @@
 import styles from './CaseStudies.module.scss'
 import colorForIndex from '@/src/utils/ColorForIndex'
+import dummyData from './dummy.json'
+import { useState } from 'react'
 
 const CaseStudies = () => {
-  // DUMMY DATA -- to be replaced with CMS
-  const caseStudies = [
-    {
-      number: '001',
-      title: 'Nation Energie',
-    },
-    {
-      number: '002',
-      title: 'Killik Handcrafted Rum',
-    },
-    {
-      number: '003',
-      title: 'GinFinity',
-    },
-    {
-      number: '004',
-      title: 'Test 1',
-    },
-    {
-      number: '005',
-      title: 'Test 2',
-    },
-  ]
+  const [activeIndex, setActiveIndex] = useState(-1)
+
+  const handleClick = (index: number) => {
+    setActiveIndex(index === activeIndex ? -1 : index)
+  }
 
   return (
     <div className='container'>
       <div className='content'>
-        {caseStudies?.map((caseStudy, index) => (
-          <div className={styles.CaseStudy}>
+        {dummyData.data?.map((caseStudy, index) => (
+          <div className={styles.CaseStudy} onClick={() => handleClick(index)}>
+            {/* Case Study Number is generated automatically based on index */}
             <p
               className={styles.CaseStudy__number}
               style={{ color: colorForIndex(index) }}
             >
-              {`Case study ${caseStudy.number}`}
+              {`Case study ${index >= 10 ? '0' : '00'}${index + 1}`}
             </p>
-            <p className={styles.CaseStudy__title}>{caseStudy.title}</p>
-            <hr className={styles.CaseStudy__line} />
-            <div
-              className={styles.CaseStudy__box}
-              style={{ background: colorForIndex(index) }}
+            {/* Case Study Title */}
+            <p
+              className={`${styles.CaseStudy__title} ${
+                activeIndex === index ? styles.ActiveTitle : ''
+              }`}
+            >
+              {caseStudy?.title}
+            </p>
+            {/* Line */}
+            <hr
+              className={`${styles.CaseStudy__line} ${
+                activeIndex === index ? styles.ActiveLine : ''
+              }`}
             />
+            {/* Box */}
+            <div
+              className={`${styles.CaseStudy__box} ${
+                activeIndex === index ? styles.ActiveBox : ''
+              }`}
+              style={{ borderColor: colorForIndex(index) }}
+            ></div>
           </div>
         ))}
       </div>
     </div>
   )
 }
-
 export default CaseStudies
