@@ -1,0 +1,17 @@
+@import 'src/styles/theme.module.scss';
+
+.PrimaryNav {
+  position: sticky;
+  top: 50px;
+}
+
+.Logo {
+  width: 40px;
+  height: auto;
+
+  @include mq('sm') {
+    width: 60px;
+  }
+
+  transition: all 0.3s ease-in-out;
+}

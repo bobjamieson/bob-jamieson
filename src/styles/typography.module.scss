@@ -1,0 +1,19 @@
+@import './breakpoints.module.scss';
+
+.h1 {
+  font-family: Shrimp;
+  font-size: 7vw;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 7vw;
+
+  @include mq('sm') {
+    font-size: 8vw;
+    line-height: 8vw;
+  }
+
+  @include mq('md') {
+    font-size: 4em;
+    line-height: 75px;
+  }
+}
