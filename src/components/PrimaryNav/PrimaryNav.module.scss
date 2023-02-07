@@ -5,12 +5,17 @@
   width: 100%;
   background: white;
   height: 80px;
+  z-index: 99;
 
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
 
   @include mq('sm') {
     height: 100px;
+  }
+
+  @include mq('md') {
+    background: none;
   }
 }
 

@@ -29,7 +29,7 @@ const Hero = () => {
       {/* Hero text */}
       <div className='container'>
         <div className={styles.HeroText}>
-          <h1 className='h1'>
+          <h1 className='H1__hero'>
             React developer.
             <br />
             Designer.

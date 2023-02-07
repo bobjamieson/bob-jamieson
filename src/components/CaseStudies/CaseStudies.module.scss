@@ -1,5 +1,9 @@
 @import '/src/styles/theme.module.scss';
 
+.CaseStudies {
+  margin-bottom: 200px;
+}
+
 .CaseStudy {
   margin-bottom: 60px;
   position: relative;
@@ -13,50 +17,70 @@
     margin-bottom: 15px;
   }
 
-  &__title {
-    font-family: 'Shrimp', sans-serif;
-    text-transform: uppercase;
-    font-size: 15px;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    transition: 0.4s ease-in-out;
-  }
-
   &__line {
     border-top: 2px solid black;
     width: 100%;
-    transition: 0.5s ease-in-out;
+    transition: 0.4s ease-in-out;
+    transition-delay: 0.4s;
+  }
+
+  .BoxContainer {
+    display: flex;
+    justify-content: right;
   }
 
   &__box {
     width: 20px;
-    height: 20px;
+    max-height: 20px;
     margin-top: -12px;
-    position: absolute;
+    position: relative;
     right: 0;
-    border: 10px solid;
     overflow: hidden;
-    transition: height 0.2s ease-in-out 0s, width 0.2s ease-in-out 0.2s,
-      border 0.2s ease-in-out 0s;
+    box-sizing: border-box;
+    transition: max-height 0.4s ease-in-out 0s, width 0.4s ease-in-out 0.4s;
+
+    &__collapse {
+      display: none;
+
+      &__active {
+        width: 15px;
+        border-top: 2px solid white;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+    }
+
+    &__content {
+      padding: 40px 40px 0 40px;
+
+      p {
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 
 .ActiveBox {
-  position: relative;
   width: 100%;
-  height: 200px;
+  max-height: 500px;
   margin: -12px 0 0 auto;
-  border: 2px solid;
-  transition: width 0.2s ease-in-out 0s, height 0.2s ease-in-out 0.2s,
-    border 0.2s ease-in-out 0.2s;
+  transition: width 0.4s ease-in-out 0s, max-height 0.4s ease-in-out 0.4s;
 }
 
 .ActiveLine {
   width: 0;
-  transition: 0.3s ease-in-out;
+  transition: 0.4s ease-in-out;
 }
 
 .ActiveTitle {
   letter-spacing: 4px;
+  opacity: 0;
   transition: 0.4s ease-in-out;
+}
+
+.ButtonContainer {
+  min-height: 50px;
+  display: flex;
+  justify-content: right;
 }

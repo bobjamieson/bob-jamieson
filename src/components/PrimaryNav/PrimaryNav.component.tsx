@@ -1,4 +1,5 @@
 import styles from './PrimaryNav.module.scss'
+import Link from 'next/link'
 
 import Image from 'next/image'
 import logo from 'public/logo.svg'
@@ -9,7 +10,9 @@ const PrimaryNav = () => {
 
     <div className={styles.PrimaryNav}>
       <div className='container'>
-        <Image src={logo} alt='logo' className={styles.Logo} />
+        <Link href='/'>
+          <Image src={logo} alt='logo' className={styles.Logo} />
+        </Link>
       </div>
     </div>
   )

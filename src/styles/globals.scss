@@ -1,5 +1,8 @@
 @import './theme.module.scss';
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 @font-face {
   font-family: 'Shrimp';
   src: url('../../public/fonts/SHRIMP.woff2');
@@ -27,7 +30,8 @@ a {
   max-width: 1440px;
 
   @include mq('sm') {
-    margin: 0 50px;
+    margin: 0 auto;
+    padding: 0 50px 0 50px;
   }
 }
 
