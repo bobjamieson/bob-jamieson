@@ -14,7 +14,7 @@ export default function Home({ caseStudies, hero }: any) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Hero hero={hero} />
-      <CaseStudies casesStudies={caseStudies} />
+      <CaseStudies caseStudies={caseStudies} />
     </>
   )
 }
