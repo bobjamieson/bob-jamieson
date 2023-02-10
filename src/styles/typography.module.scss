@@ -1,4 +1,5 @@
 @import './breakpoints.module.scss';
+@import './colours.module.scss';
 
 .H1 {
   &__hero {
@@ -8,6 +9,10 @@
     text-transform: uppercase;
     line-height: 9vw;
     font-weight: 100;
+
+    span {
+      color: $colour-blue;
+    }
 
     @include mq('md') {
       font-size: 3em;
@@ -30,11 +35,6 @@
       letter-spacing: 2px;
       margin-bottom: 20px;
       transition: 0.4s ease-in-out;
-
-      &__active {
-        color: white;
-        font-size: 30px;
-      }
     }
 
     &__number {

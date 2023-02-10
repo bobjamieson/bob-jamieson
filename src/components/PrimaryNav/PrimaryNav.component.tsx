@@ -11,7 +11,12 @@ const PrimaryNav = () => {
     <div className={styles.PrimaryNav}>
       <div className='container'>
         <Link href='/'>
-          <Image src={logo} alt='logo' className={styles.Logo} />
+          <Image
+            src={logo}
+            alt='logo'
+            className={styles.Logo}
+            priority={true}
+          />
         </Link>
       </div>
     </div>
