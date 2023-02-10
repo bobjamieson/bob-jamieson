@@ -3,11 +3,8 @@ import colorForIndex from '../../utils/ColorForIndex'
 import Link from 'next/link'
 import Button from '../Button/Button.component'
 import { useState } from 'react'
-import { ApolloClient } from '@apollo/client'
-import { InMemoryCache } from '@apollo/client'
-import { GET_ALL_CASESTUDIES } from '@/graphql/queries'
 
-const CaseStudies = ({ caseStudies }: any) => {
+const CaseStudies = (caseStudies: any) => {
   const [activeIndex, setActiveIndex] = useState(-1)
 
   const handleClick = (index: number) => {
@@ -27,7 +24,7 @@ const CaseStudies = ({ caseStudies }: any) => {
 
   return (
     <div className={styles.CaseStudies}>
-      {caseStudies?.data?.map((caseStudy: any, index: number) => (
+      {caseStudies?.caseStudies?.map((caseStudy: any, index: number) => (
         <div
           className={styles.CaseStudy}
           id={`case-study-${index}`}
@@ -98,17 +95,3 @@ const CaseStudies = ({ caseStudies }: any) => {
   )
 }
 export default CaseStudies
-
-export const getStaticProps = async () => {
-  const client = new ApolloClient({
-    uri: process.env.STRAPI_GRAPHQL_API,
-    cache: new InMemoryCache(),
-  })
-  const { data } = await client.query({ query: GET_ALL_CASESTUDIES })
-
-  return {
-    props: {
-      caseStudies: data.casestudies.data,
-    },
-  }
-}
