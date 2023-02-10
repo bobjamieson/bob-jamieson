@@ -1,7 +1,17 @@
 @import '/src/styles/theme.module.scss';
 
 .CaseStudies {
-  margin-bottom: 200px;
+  padding: 0 30px;
+
+  @include mq('sm') {
+    padding: 0 50px;
+  }
+
+  @include mq('md') {
+    padding: 0;
+    max-width: 550px;
+    margin: 0 auto;
+  }
 }
 
 .CaseStudy {
@@ -39,33 +49,43 @@
     box-sizing: border-box;
     transition: max-height 0.4s ease-in-out 0s, width 0.4s ease-in-out 0.4s;
 
+    &__active {
+      width: 100%;
+      max-height: 500px;
+      margin: -12px 0 0 auto;
+      transition: width 0.4s ease-in-out 0s, max-height 0.4s ease-in-out 0.4s;
+    }
+
     &__collapse {
       display: none;
 
       &__active {
         width: 15px;
         border-top: 2px solid white;
-        position: absolute;
-        right: 20px;
-        top: 20px;
+        margin-top: 20px;
+        margin-bottom: -20px;
+        margin-right: 20px;
       }
     }
 
     &__content {
       padding: 40px 40px 0 40px;
 
+      &__title {
+        font-family: 'Shrimp', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+
+        font-size: 30px;
+        color: white;
+      }
+
       p {
         margin-bottom: 20px;
       }
     }
   }
-}
-
-.ActiveBox {
-  width: 100%;
-  max-height: 500px;
-  margin: -12px 0 0 auto;
-  transition: width 0.4s ease-in-out 0s, max-height 0.4s ease-in-out 0.4s;
 }
 
 .ActiveLine {
@@ -81,6 +101,11 @@
 
 .ButtonContainer {
   min-height: 50px;
+  display: flex;
+  justify-content: right;
+}
+
+.CollapseContainer {
   display: flex;
   justify-content: right;
 }

@@ -1,6 +1,12 @@
 import 'src/styles/globals.scss'
 import type { AppProps } from 'next/app'
+import PrimaryNav from '@/src/components/PrimaryNav/PrimaryNav.component'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <PrimaryNav />
+      <Component {...pageProps} />
+    </>
+  )
 }

@@ -1,22 +1,21 @@
 import styles from './Hero.module.scss'
-import RandomColour from '@/src/utils/RandomColour'
-import PrimaryNav from '../PrimaryNav/PrimaryNav.component'
 import Link from 'next/link'
+import { isBrowser } from '@/src/utils/isBrowser'
+// @ts-ignore
+import { Markup } from 'react-render-markup'
 
-// Image imports
-import Image from 'next/image'
-import heroImage from 'public/images/hero-image.png'
-
-const Hero = () => {
+const Hero = ({ hero }: any) => {
+  let heroTitle
+  if (isBrowser()) {
+    heroTitle = document.getElementsByClassName('.H1__hero')
+  }
   return (
     <div className={styles.Hero}>
-      {/* Primary Nav */}
-      <PrimaryNav />
       <div className='container'>
         {/* Hero image */}
         <div className={styles.HeroImage}>
-          <Image
-            src={heroImage}
+          <img
+            src={`${hero?.data?.attributes?.image.data.attributes.url}`}
             alt='hero image'
             className={styles.HeroImage__Image}
           />
@@ -29,14 +28,8 @@ const Hero = () => {
       {/* Hero text */}
       <div className='container'>
         <div className={styles.HeroText}>
-          <h1 className='H1__hero'>
-            React developer.
-            <br />
-            Designer.
-            <br />
-            <RandomColour>
-              <span>Bob.</span>
-            </RandomColour>
+          <h1 className='H1__hero' id='HeroText'>
+            <Markup markup={hero?.data?.attributes?.title} />
           </h1>
           <Link href='/about' className={styles.HeroText__link}>
             Other things.
