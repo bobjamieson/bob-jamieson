@@ -9,6 +9,7 @@ const GET_ALL_CASESTUDIES = gql`
           title
           snippet
           body
+          slug
         }
       }
     }
@@ -25,6 +26,7 @@ const GET_HERO = gql`
             data {
               attributes {
                 name
+                url
                 hash
                 caption
                 formats

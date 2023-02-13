@@ -2,13 +2,14 @@
 @import './colours.module.scss';
 
 .H1 {
+  font-family: Shrimp;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 100;
+
   &__hero {
-    font-family: Shrimp;
     font-size: 8vw;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
     line-height: 9vw;
-    font-weight: 100;
 
     span {
       color: $colour-blue;
@@ -20,6 +21,10 @@
       letter-spacing: 0.1em;
     }
   }
+
+  &__CaseStudyPage {
+    font-size: 60px;
+  }
 }
 
 .P {
@@ -28,7 +33,7 @@
   }
 
   &__CaseStudy {
-    &__title {
+    &__Title {
       font-family: 'Shrimp', sans-serif;
       text-transform: uppercase;
       font-size: 15px;
@@ -37,7 +42,7 @@
       transition: 0.4s ease-in-out;
     }
 
-    &__number {
+    &__Number {
       font-family: 'Shrimp', sans-serif;
       text-transform: uppercase;
       font-size: 11px;
@@ -45,13 +50,31 @@
       margin-bottom: 15px;
     }
 
-    &__content {
+    &__Snippet {
       font-family: Poppins;
       font-size: 14px;
       font-weight: 400;
       letter-spacing: 0.1em;
       font-size: 12px;
       color: white;
+    }
+  }
+
+  &__CaseStudyPage {
+    &__Body {
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+    }
+
+    &__Number {
+      font-family: 'Shrimp', sans-serif;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      margin-bottom: 15px;
     }
   }
 }

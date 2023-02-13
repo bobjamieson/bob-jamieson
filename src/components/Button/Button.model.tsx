@@ -1,3 +1,7 @@
 export interface ButtonProps {
-  colorIndex: number
+  link: {
+    href: string
+    as: string
+  }
+  children?: React.ReactNode
 }
