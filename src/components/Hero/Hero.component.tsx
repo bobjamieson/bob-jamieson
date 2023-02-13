@@ -15,7 +15,7 @@ const Hero = ({ hero }: any) => {
         {/* Hero image */}
         <div className={styles.HeroImage}>
           <img
-            src={`${hero?.data?.attributes?.image.data.attributes.url}`}
+            src={`${hero?.attributes.image.data.attributes.url}`}
             alt='hero image'
             className={styles.HeroImage__Image}
           />
@@ -28,7 +28,7 @@ const Hero = ({ hero }: any) => {
       {/* Hero text */}
       <div className='container'>
         <div className={styles.HeroText}>
-          <h1 className='H1__hero' id='HeroText'>
+          <h1 className='H1 H1__hero' id='HeroText'>
             <Markup markup={hero?.attributes?.title} />
           </h1>
           <Link href='/about' className={styles.HeroText__link}>

@@ -1,0 +1,42 @@
+@import '/src/styles/theme.module.scss';
+
+.CaseStudy {
+  &__Header {
+    padding-top: 100px;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    @include mq('sm') {
+      padding-top: 200px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &__Text {
+      margin-right: 20px;
+    }
+
+    &__Line {
+      border-top: 2px solid black;
+      height: 0;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    &__Box {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      right: 0;
+      margin-top: 10px;
+    }
+  }
+
+  &__Body {
+    padding: 50px;
+  }
+}
+
+.BodyContainer {
+}

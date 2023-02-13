@@ -32,14 +32,14 @@ const CaseStudies = (caseStudies: any) => {
         >
           {/* Case Study Number is generated automatically based on index */}
           <p
-            className='P__CaseStudy__number'
+            className='P__CaseStudy__Number'
             style={{ color: colorForIndex(index) }}
           >
             {`Case study ${index >= 10 ? '0' : '00'}${index + 1}`}
           </p>
           {/* Case Study Title */}
           <p
-            className={`P__CaseStudy__title ${
+            className={`P__CaseStudy__Title ${
               activeIndex === index ? styles.ActiveTitle : ''
             }`}
           >
@@ -78,13 +78,21 @@ const CaseStudies = (caseStudies: any) => {
                   <p className={styles.CaseStudy__box__content__title}>
                     {caseStudy?.attributes.title}
                   </p>
-                  <p className='P__CaseStudy__content'>
+                  <p className='P__CaseStudy__Snippet'>
                     {caseStudy?.attributes.snippet}
                   </p>
                 </div>
+                {console.log(caseStudy?.attributes.slug)}
 
                 <div className={styles.ButtonContainer}>
-                  <Button colorIndex={index} />
+                  <Button
+                    link={{
+                      href: '/case-studies/[slug]',
+                      as: `/case-studies/${caseStudy?.attributes.slug}`,
+                    }}
+                  >
+                    Read More
+                  </Button>
                 </div>
               </>
             </div>
