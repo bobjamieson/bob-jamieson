@@ -1,11 +1,24 @@
 @import './breakpoints.module.scss';
 @import './colours.module.scss';
 
+$h1-font-family: Shrimp;
+$h1-letter-spacing: 0.04em;
+$h1-text-transform: uppercase;
+$h1-font-weight: 100;
+
+$case-study-font-family: 'Shrimp', sans-serif;
+$case-study-text-transform: uppercase;
+$case-study-letter-spacing: 2px;
+
+$primary-font-family: Poppins;
+$primary-font-size: 12px;
+$primary-letter-spacing: 0.1em;
+
 .H1 {
-  font-family: Shrimp;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-weight: 100;
+  font-family: $h1-font-family;
+  letter-spacing: $h1-letter-spacing;
+  text-transform: $h1-text-transform;
+  font-weight: $h1-font-weight;
 
   &__hero {
     font-size: 8vw;
@@ -23,58 +36,76 @@
   }
 
   &__CaseStudyPage {
-    font-size: 60px;
+    font-size: 30px;
+    color: white;
   }
 }
 
 .P {
   &__PrimaryNav {
-    font-family: Shrimp, sans-serif;
+    font-family: Poppins;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
   }
 
   &__CaseStudy {
+    font-family: $case-study-font-family;
+    text-transform: $case-study-text-transform;
     &__Title {
-      font-family: 'Shrimp', sans-serif;
-      text-transform: uppercase;
+      @extend .P__CaseStudy;
       font-size: 15px;
-      letter-spacing: 2px;
+      letter-spacing: $case-study-letter-spacing;
       margin-bottom: 20px;
       transition: 0.4s ease-in-out;
     }
 
+    &__WhiteTitle {
+      @extend .P__CaseStudy;
+      letter-spacing: $case-study-letter-spacing;
+
+      font-size: 30px;
+      color: white;
+
+      &__PostPage {
+        @extend .P__CaseStudy__WhiteTitle;
+        font-size: 15px;
+
+        @include mq('md') {
+          text-align: right;
+        }
+      }
+    }
+
     &__Number {
-      font-family: 'Shrimp', sans-serif;
-      text-transform: uppercase;
+      @extend .P__CaseStudy;
       font-size: 11px;
       letter-spacing: 1.5px;
       margin-bottom: 15px;
     }
 
     &__Snippet {
-      font-family: Poppins;
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      font-size: 12px;
+      @extend .P__CaseStudyPage__Body;
       color: white;
     }
   }
 
   &__CaseStudyPage {
     &__Body {
-      font-family: Poppins;
-      font-size: 14px;
+      font-family: $primary-font-family;
+      font-size: $primary-font-size;
       font-weight: 400;
-      letter-spacing: 0.1em;
-      font-size: 12px;
+      letter-spacing: $primary-letter-spacing;
     }
 
     &__Number {
-      font-family: 'Shrimp', sans-serif;
-      text-transform: uppercase;
+      font-family: $case-study-font-family;
+      text-transform: $case-study-text-transform;
       font-size: 11px;
       letter-spacing: 1.5px;
       margin-bottom: 15px;
+      color: white;
     }
   }
 }

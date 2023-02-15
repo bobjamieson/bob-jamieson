@@ -23,7 +23,7 @@ const CaseStudies = (caseStudies: any) => {
   }
 
   return (
-    <div className={styles.CaseStudies}>
+    <div className={styles.CaseStudies} id='CaseStudies'>
       {caseStudies?.caseStudies?.map((caseStudy: any, index: number) => (
         <div
           className={styles.CaseStudy}
@@ -64,6 +64,7 @@ const CaseStudies = (caseStudies: any) => {
               {/* Box Content */}
               <>
                 {/* Collapse Button */}
+
                 <div className={styles.CollapseContainer}>
                   <hr
                     className={
@@ -81,18 +82,16 @@ const CaseStudies = (caseStudies: any) => {
                   <p className='P__CaseStudy__Snippet'>
                     {caseStudy?.attributes.snippet}
                   </p>
-                </div>
-                {console.log(caseStudy?.attributes.slug)}
-
-                <div className={styles.ButtonContainer}>
-                  <Button
-                    link={{
-                      href: '/case-studies/[slug]',
-                      as: `/case-studies/${caseStudy?.attributes.slug}`,
-                    }}
-                  >
-                    Read More
-                  </Button>
+                  <div className={styles.ButtonContainer}>
+                    <Button
+                      link={{
+                        href: '/case-studies/[slug]',
+                        as: `/case-studies/${caseStudy?.attributes.slug}`,
+                      }}
+                    >
+                      Read More
+                    </Button>
+                  </div>
                 </div>
               </>
             </div>
