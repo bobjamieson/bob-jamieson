@@ -12,13 +12,15 @@ const Hero = ({ hero }: any) => {
   return (
     <div className={styles.Hero}>
       <div className='container'>
-        {/* Hero image */}
-        <div className={styles.HeroImage}>
-          <img
-            src={`${hero?.attributes.image.data.attributes.url}`}
-            alt='hero image'
-            className={styles.HeroImage__Image}
-          />
+        <div className={styles.HeroImageContainer}>
+          {/* Hero image */}
+          <div className={styles.HeroImage}>
+            <img
+              src={`${hero?.attributes.image.data.attributes.url}`}
+              alt='hero image'
+              className={styles.HeroImage__Image}
+            />
+          </div>
         </div>
       </div>
 
@@ -27,13 +29,15 @@ const Hero = ({ hero }: any) => {
 
       {/* Hero text */}
       <div className='container'>
-        <div className={styles.HeroText}>
-          <h1 className='H1 H1__hero' id='HeroText'>
-            <Markup markup={hero?.attributes?.title} />
-          </h1>
-          <Link href='/about' className={styles.HeroText__link}>
-            Other things.
-          </Link>
+        <div className={styles.HeroTextContainer}>
+          <div className={styles.HeroText}>
+            <h1 className='H1 H1__hero' id='HeroText'>
+              <Markup markup={hero?.attributes?.title} />
+            </h1>
+            <Link href='/about' className={styles.HeroText__link}>
+              Other things.
+            </Link>
+          </div>
         </div>
       </div>
     </div>

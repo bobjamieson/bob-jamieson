@@ -2,12 +2,14 @@ $colour-orange: #ff8600;
 $colour-blue: #0aa7a5;
 $colour-red: #bc285b;
 $colour-purple: #9031ab;
+$colour-yellow: rgb(238 180 4);
 
 :export {
   ColourRed: $colour-red;
   ColourBlue: $colour-blue;
   ColourOrange: $colour-orange;
   ColourPurple: $colour-purple;
+  ColourYellow: $colour-yellow;
 }
 
 $line-purple: #330c3f;

@@ -1,0 +1,17 @@
+.FooterContainer {
+  margin-top: auto;
+}
+
+.Footer {
+  background: black;
+
+  &__Content {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    &__Logo {
+      width: 100px;
+      height: auto;
+    }
+  }
+}

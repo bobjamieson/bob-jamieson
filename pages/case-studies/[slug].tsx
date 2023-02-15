@@ -5,7 +5,8 @@ import { CaseStudyPageProps } from './CaseStudyPage.model'
 import colorForIndex from '@/src/utils/ColorForIndex'
 // @ts-ignore
 import { Markup } from 'react-render-markup'
-import CaseStudies from '@/src/components/CaseStudies/CaseStudies.component'
+import Button from '@/src/components/Button/Button.component'
+import PostSideBar from '@/src/components/PostSideBar/PostSideBar.component'
 
 const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   caseStudy,
@@ -15,16 +16,19 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
   return (
     <>
-      <div className='container'>
+      <div className={`${styles.CaseStudy__Container} container`}>
         <div className={styles.CaseStudy__Header}>
-          <div className={styles.CaseStudy__Header__Text}>
+          <div
+            className={styles.CaseStudy__Header__Text}
+            style={{ background: colorForIndex(currentIndex) }}
+          >
             <p className='P__CaseStudyPage__Number'>
               {`Case study ${currentIndex >= 10 ? '0' : '00'}${
                 currentIndex + 1
               }`}
             </p>
             <h1 className={'H1 H1__CaseStudyPage'}>
-              {currentCaseStudy.attributes.title}
+              {currentCaseStudy?.attributes.title}
             </h1>
           </div>
 
@@ -35,14 +39,19 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           />
         </div>
 
-        {/* Body */}
+        <div className={styles.ContentContainer}>
+          {/* Body */}
 
-        <div className={styles.BodyContainer}>
           <div className={styles.CaseStudy__Body}>
+            {/* <img
+              src={`${currentCaseStudy?.attributes.image.url}`}
+              alt='Website screenshot'
+            /> */}
             <Markup
-              markup={`<div className='P__CaseStudyPage__Body'>${currentCaseStudy.attributes.body}</div>`}
+              markup={`<div className='P__CaseStudyPage__Body'>${currentCaseStudy?.attributes.body}</div>`}
             />
           </div>
+          <PostSideBar caseStudies={caseStudy} currentIndex={currentIndex} />
         </div>
       </div>
     </>
@@ -51,6 +60,7 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
 export default CaseStudyPage
 
+//Async for current page data
 export async function getStaticProps({ params }) {
   const caseStudiesRes = await axios.get(
     'http://localhost:1337/api/casestudies?populate=*'

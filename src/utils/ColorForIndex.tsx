@@ -7,6 +7,7 @@ export default function colorForIndex(index: any) {
     variables.ColourBlue,
     variables.ColourOrange,
     variables.ColourPurple,
+    variables.ColourYellow,
   ]
   return colors[Math.floor(index % colors.length)]
 }

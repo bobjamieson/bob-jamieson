@@ -1,11 +1,10 @@
 @import '/src/styles/theme.module.scss';
 
 .Button {
-  padding: 15px 30px;
-  color: white;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   letter-spacing: 2px;
+  color: white;
   text-transform: uppercase;
   border: none;
   transition: all 0.2s ease-in-out;
