@@ -3,14 +3,17 @@
 .PrimaryNavMd {
   position: fixed;
   background: white;
-  height: 80px;
+  height: 70px;
   z-index: 99;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
   left: 0;
   right: 0;
+
+  @include mq('sm') {
+    height: 80px;
+  }
 }
 
 .Logo {
@@ -49,6 +52,7 @@
     display: flex;
     justify-content: right;
     margin-top: 60px;
+    position: relative;
 
     @include mq('md') {
       display: none;
@@ -56,15 +60,18 @@
 
     &__Items {
       background: white;
-      padding: 40px 50px 20px 50px;
+      min-width: max-content;
       box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
       position: absolute;
-      min-height: 10px;
       list-style: none;
       text-align: right;
-      min-width: 20px;
+      padding: 20px;
+
       li {
-        padding-bottom: 20px;
+        min-width: max-content;
+        &:not(:last-child) {
+          padding-bottom: 20px;
+        }
       }
     }
   }
@@ -74,13 +81,13 @@
   width: 100%;
   display: flex;
   justify-content: right;
-  height: 30px;
+  height: 20px;
 }
 
 .Hamburger {
   z-index: 100;
   position: absolute;
-  width: 30px;
+  height: 20px;
   max-height: 30px;
   cursor: pointer;
 }
