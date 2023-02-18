@@ -79,7 +79,7 @@ const PrimaryNav = () => {
               className={`${styles.NavBurger__ItemsContainer__Items} P__PrimaryNav`}
             >
               {menuItems.map((item) => (
-                <li key={item.id}>
+                <li key={item.id} onClick={() => setBurger(!burger)}>
                   <Link href={item.href}>
                     <span
                       onMouseEnter={() => handleMouseEnter(item.id)}
