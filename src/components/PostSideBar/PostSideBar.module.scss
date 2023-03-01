@@ -4,10 +4,6 @@
   min-width: 00px;
   width: 100%;
 
-  @include mq('md') {
-    max-width: 350px;
-  }
-
   &__Post {
     padding: 30px;
     margin-bottom: 30px;

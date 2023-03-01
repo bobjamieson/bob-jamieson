@@ -1,0 +1,14 @@
+@import '/src/styles/theme.module.scss';
+
+.TopBarContainer {
+  border-bottom: 1px solid #e3e3e3;
+  background: white;
+}
+
+.TopBar {
+  height: 30px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 15px;
+}

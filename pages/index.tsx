@@ -3,10 +3,13 @@ import Hero from '@/src/components/Hero/Hero.component'
 import CaseStudies from '@/src/components/CaseStudies/CaseStudies.component'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { GET_ALL_CASESTUDIES, GET_HERO } from '@/graphql/queries'
+import { CaseStudyProps, HeroProps } from '@/src/types'
+import ChatBox from '@/src/components/ChatBox/ChatBox.component'
+import axios from 'axios'
 
-export default function Home({ caseStudies, hero }: any) {
+export default function Home({ caseStudies, hero }) {
   return (
-    <>
+    <main>
       <Head>
         <title>Bob Jamieson</title>
         <meta name='description' content="A React dev's portfolio." />
@@ -15,24 +18,11 @@ export default function Home({ caseStudies, hero }: any) {
       </Head>
       <Hero hero={hero} />
       <CaseStudies caseStudies={caseStudies} />
-    </>
+      <ChatBox />
+    </main>
   )
 }
 
-// export async function getStaticProps() {
-//   const heroRes = await axios.get('http://localhost:1337/api/hero?populate=*')
-//   const caseStudiesRes = await axios.get(
-//     'http://localhost:1337/api/casestudies?populate=*'
-//   )
-
-//   return {
-//     props: {
-//       heroData: heroRes.data,
-//       caseStudiesData: caseStudiesRes.data,
-//     },
-//   }
-// }
-// -----------------------------
 export const getStaticProps = async () => {
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_API,

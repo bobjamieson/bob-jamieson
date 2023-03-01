@@ -7,11 +7,11 @@ import { Markup } from 'react-render-markup'
 const Hero = ({ hero }: any) => {
   let heroTitle
   if (isBrowser()) {
-    heroTitle = document.getElementsByClassName('.H1__hero')
+    heroTitle = document.getElementsByClassName('.H1__Hero')
   }
   return (
     <div className={styles.Hero}>
-      <div className='container'>
+      <div className='Container'>
         <div className={styles.HeroImageContainer}>
           {/* Hero image */}
           <div className={styles.HeroImage}>
@@ -28,13 +28,13 @@ const Hero = ({ hero }: any) => {
       <div className={styles.Line} />
 
       {/* Hero text */}
-      <div className='container'>
+      <div className='Container'>
         <div className={styles.HeroTextContainer}>
           <div className={styles.HeroText}>
-            <h1 className='H1 H1__hero' id='HeroText'>
+            <h1 className='H1 H1__Hero' id='HeroText'>
               <Markup markup={hero?.attributes?.title} />
             </h1>
-            <Link href='/about' className={styles.HeroText__link}>
+            <Link href='/about' className={styles.HeroText__Link}>
               Other things.
             </Link>
           </div>

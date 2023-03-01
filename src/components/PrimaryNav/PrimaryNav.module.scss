@@ -1,18 +1,27 @@
 @import 'src/styles/theme.module.scss';
 
-.PrimaryNavMd {
-  position: fixed;
-  background: white;
-  height: 70px;
+.PrimaryNavContainer {
   z-index: 99;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.PrimaryNav {
+  background: rgb(255 255 255 / 56%);
+  backdrop-filter: blur(2px);
+  border-bottom: 2px solid white;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  left: 0;
-  right: 0;
 
   @include mq('sm') {
-    height: 80px;
+  }
+
+  &:before {
+    filter: blur(10px);
+    background: inherit;
   }
 }
 
@@ -21,7 +30,7 @@
   height: auto;
   transition: all 0.3s ease-in-out;
   @include mq('sm') {
-    width: 60px;
+    width: 50px;
   }
 }
 
@@ -32,10 +41,10 @@
     ul {
       list-style: none;
       display: flex;
-      cursor: pointer;
+      gap: 100px;
 
       li {
-        margin-left: 100px;
+        cursor: pointer;
       }
     }
   }
@@ -84,7 +93,7 @@
   height: 20px;
 }
 
-.Hamburger {
+.Burger {
   z-index: 100;
   position: absolute;
   height: 20px;

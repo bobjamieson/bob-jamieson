@@ -11,7 +11,7 @@ $case-study-text-transform: uppercase;
 $case-study-letter-spacing: 2px;
 
 $primary-font-family: Poppins;
-$primary-font-size: 12px;
+$primary-font-size: 10px;
 $primary-letter-spacing: 0.1em;
 
 .H1 {
@@ -20,7 +20,7 @@ $primary-letter-spacing: 0.1em;
   text-transform: $h1-text-transform;
   font-weight: $h1-font-weight;
 
-  &__hero {
+  &__Hero {
     font-size: 8vw;
     line-height: 9vw;
 
@@ -36,14 +36,13 @@ $primary-letter-spacing: 0.1em;
   }
 
   &__CaseStudyPage {
-    font-size: 30px;
-    color: white;
+    font-size: 50px;
   }
 }
 
 .P {
   &__PrimaryNav {
-    font-family: Poppins;
+    font-family: $primary-font-family;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -105,7 +104,32 @@ $primary-letter-spacing: 0.1em;
       font-size: 11px;
       letter-spacing: 1.5px;
       margin-bottom: 15px;
-      color: white;
+    }
+
+    &__List {
+      font-family: Poppins;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding-top: 30px;
+
+      li {
+        padding-bottom: 10px;
+        list-style: none;
+      }
+    }
+  }
+
+  &__TopBar {
+    &__Weather {
+      font-family: $primary-font-family;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+
+      span {
+        font-weight: 500;
+      }
     }
   }
 }

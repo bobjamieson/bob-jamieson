@@ -1,0 +1,93 @@
+@use 'sass:map';
+
+/**
+ * Breakpoint ranges.
+ */
+$breakpoints: (
+  '_': (
+    'min': 0,
+    'max': 374,
+  ),
+  'xs': (
+    'min': 375,
+    'max': 575,
+  ),
+  'sm': (
+    'min': 576,
+    'max': 767,
+  ),
+  'md': (
+    'min': 768,
+    'max': 1023,
+  ),
+  'lg': (
+    'min': 1024,
+    'max': 1439,
+  ),
+  'xl': (
+    'min': 1440,
+    'max': 2559,
+  ),
+  'xxl': (
+    'min': 2560,
+  ),
+);
+
+/**
+ * Media queries.
+ */
+$mq: (
+  '_': "only screen and (min-width: #{map.get($breakpoints, '_', 'min')}px)",
+  '_-max': "only screen and (min-width: #{map.get($breakpoints, '_', 'max')}px)",
+  'xs': "only screen and (min-width: #{map.get($breakpoints, 'xs', 'min')}px)",
+  'xs-max':
+    "only screen and (max-width: #{map.get($breakpoints, 'xs', 'max')}px)",
+  'sm': "only screen and (min-width: #{map.get($breakpoints, 'sm', 'min')}px)",
+  'sm-max':
+    "only screen and (max-width: #{map.get($breakpoints, 'sm', 'max')}px)",
+  'md': "only screen and (min-width: #{map.get($breakpoints, 'md', 'min')}px)",
+  'md-max':
+    "only screen and (max-width: #{map.get($breakpoints, 'md', 'max')}px)",
+  'lg': "only screen and (min-width: #{map.get($breakpoints, 'lg', 'min')}px)",
+  'lg-max':
+    "only screen and (max-width: #{map.get($breakpoints, 'lg', 'max')}px)",
+  'xl': "only screen and (min-width: #{map.get($breakpoints, 'xl', 'min')}px)",
+  'xl-max':
+    "only screen and (min-width: #{map.get($breakpoints, 'xl', 'max')}px)",
+  'xxl': "only screen and (min-width: #{map.get($breakpoints, 'xxl', 'min')}px)",
+);
+
+/**
+ * Returns breakpoint range value.
+ * 
+ * @param {string} $breakpoint - Breakpoint.
+ * @param {string} $minOrMax - "min" or "max" range values.
+ * @example breakpoint("xs", "min") // 375
+ */
+@function breakpoint($breakpoint, $minOrMax) {
+  @return map.get($breakpoints, $breakpoint, $minOrMax);
+}
+
+/**
+ * Returns media query.
+ * 
+ * @param {string} $breakpoint - Breakpoint.
+ */
+@mixin mq($breakpoint) {
+  @media #{map.get($mq, $breakpoint)} {
+    @content;
+  }
+}
+
+/**
+ * Mixin for applying responsive properties to lists.
+ *
+ * @param {string} $list - List of breakpoint/value pairs.
+ */
+@mixin responsive($list) {
+  @each $breakpoint, $value in $list {
+    @media #{map.get($mq, $breakpoint)} {
+      @content ($value);
+    }
+  }
+}

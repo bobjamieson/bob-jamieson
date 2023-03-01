@@ -1,10 +1,10 @@
 import styles from './CaseStudies.module.scss'
 import colorForIndex from '../../utils/ColorForIndex'
-import Link from 'next/link'
 import Button from '../Button/Button.component'
 import { useState } from 'react'
+import { CaseStudyProps } from '@/src/types'
 
-const CaseStudies = (caseStudies: any) => {
+const CaseStudies: React.FC<CaseStudyProps> = (caseStudies) => {
   const [activeIndex, setActiveIndex] = useState(-1)
 
   const handleClick = (index: number) => {
@@ -18,16 +18,17 @@ const CaseStudies = (caseStudies: any) => {
             block: 'center',
           })
         }
-      }, 650) //delay (ms) to account for animations
+      }, 650)
     }
   }
 
   return (
     <div className={styles.CaseStudies} id='CaseStudies'>
       {caseStudies?.caseStudies?.map((caseStudy: any, index: number) => (
-        <div
+        <article
           className={styles.CaseStudy}
           id={`case-study-${index}`}
+          key={index}
           onClick={() => handleClick(index)}
         >
           {/* Case Study Number is generated automatically based on index */}
@@ -47,8 +48,8 @@ const CaseStudies = (caseStudies: any) => {
           </p>
           {/* Line */}
           <hr
-            className={`${styles.CaseStudy__line} ${
-              activeIndex === index ? styles.ActiveLine : ''
+            className={`${styles.CaseStudy__Line} ${
+              activeIndex === index ? styles.CaseStudy__Line__Active : ''
             }`}
           />
           {/* Box */}
@@ -56,8 +57,8 @@ const CaseStudies = (caseStudies: any) => {
             <div
               className={
                 activeIndex === index
-                  ? styles.CaseStudy__box__active
-                  : styles.CaseStudy__box
+                  ? styles.CaseStudy__Box__Active
+                  : styles.CaseStudy__Box
               }
               style={{ background: colorForIndex(index) }}
             >
@@ -69,14 +70,20 @@ const CaseStudies = (caseStudies: any) => {
                   <hr
                     className={
                       activeIndex === index
-                        ? styles.CaseStudy__box__collapse__active
-                        : styles.CaseStudy__box__collapse
+                        ? styles.CaseStudy__Box__Collapse__Active
+                        : styles.CaseStudy__Box__Collapse
                     }
                   />
                 </div>
 
-                <div className={styles.CaseStudy__box__content}>
-                  <p className={styles.CaseStudy__box__content__title}>
+                <div
+                  className={
+                    activeIndex === index
+                      ? styles.CaseStudy__Box__Content__Active
+                      : styles.CaseStudy__Box__Content
+                  }
+                >
+                  <p className={styles.CaseStudy__Box__Content__Title}>
                     {caseStudy?.attributes.title}
                   </p>
                   <p className='P__CaseStudy__Snippet'>
@@ -96,7 +103,7 @@ const CaseStudies = (caseStudies: any) => {
               </>
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   )
