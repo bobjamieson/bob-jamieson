@@ -7,6 +7,8 @@ import colorForIndex from '@/src/utils/ColorForIndex'
 import { Markup } from 'react-render-markup'
 import Button from '@/src/components/Button/Button.component'
 import PostSideBar from '@/src/components/PostSideBar/PostSideBar.component'
+import { useEffect, useRef } from 'react'
+import { isBrowser } from '@/src/utils/isBrowser'
 
 const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   caseStudy,
@@ -16,42 +18,48 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
   return (
     <>
-      <div className={`${styles.CaseStudy__Container} container`}>
+      <div className={`${styles.CaseStudy__Container} Container`}>
         <div className={styles.CaseStudy__Header}>
-          <div
-            className={styles.CaseStudy__Header__Text}
-            style={{ background: colorForIndex(currentIndex) }}
-          >
+          <div className={styles.CaseStudy__Header__Title}>
             <p className='P__CaseStudyPage__Number'>
               {`Case study ${currentIndex >= 10 ? '0' : '00'}${
                 currentIndex + 1
               }`}
             </p>
-            <h1 className={'H1 H1__CaseStudyPage'}>
+            <h1
+              className='H1 H1__CaseStudyPage'
+              style={{ color: colorForIndex(currentIndex) }}
+            >
               {currentCaseStudy?.attributes.title}
             </h1>
+            <hr className={styles.CaseStudy__Header__Line} />
+
+            <div
+              className={`${styles.CaseStudy__Header__List} P__CaseStudyPage__List`}
+            >
+              <Markup markup={currentCaseStudy?.attributes.techlist} />
+            </div>
           </div>
 
-          <hr className={styles.CaseStudy__Header__Line} />
-          <div
-            className={styles.CaseStudy__Header__Box}
-            style={{ background: colorForIndex(currentIndex) }}
-          />
+          {currentCaseStudy.attributes.image.data && (
+            <div className={styles.CaseStudy__Header__Image}>
+              <img
+                src={currentCaseStudy?.attributes.image?.data[0].attributes.url}
+              />
+            </div>
+          )}
         </div>
 
-        <div className={styles.ContentContainer}>
+        <div className={`${styles.ContentContainer}`}>
           {/* Body */}
-
           <div className={styles.CaseStudy__Body}>
-            {/* <img
-              src={`${currentCaseStudy?.attributes.image.url}`}
-              alt='Website screenshot'
-            /> */}
             <Markup
               markup={`<div className='P__CaseStudyPage__Body'>${currentCaseStudy?.attributes.body}</div>`}
             />
           </div>
-          <PostSideBar caseStudies={caseStudy} currentIndex={currentIndex} />
+          <div className={styles.CaseStudy__SideBar}>
+            <PostSideBar caseStudies={caseStudy} currentIndex={currentIndex} />
+          </div>
         </div>
       </div>
     </>

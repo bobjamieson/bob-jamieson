@@ -6,7 +6,7 @@ const PostSideBar = ({ caseStudies, currentIndex }) => {
   return (
     <div className={styles.RelatedPosts}>
       {caseStudies?.data?.map((caseStudy: any, index: number) => (
-        <div className={`${styles.RelatedPostsContainer}`}>
+        <div className={`${styles.RelatedPostsContainer}`} key={index}>
           {currentIndex !== index && (
             <Button
               link={{

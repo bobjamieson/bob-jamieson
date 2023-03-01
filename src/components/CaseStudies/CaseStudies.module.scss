@@ -16,7 +16,7 @@
     padding-top: 150px;
     max-width: 550px;
     min-width: 550px;
-    margin: 0 auto 200px auto;
+    margin: -150px auto 200px auto;
   }
 }
 
@@ -25,19 +25,16 @@
   position: relative;
   cursor: pointer;
 
-  &__number {
-    font-family: 'Shrimp', sans-serif;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    margin-bottom: 15px;
-  }
-
-  &__line {
+  &__Line {
     border-top: 2px solid black;
     width: 100%;
     transition: 0.4s ease-in-out;
     transition-delay: 0.4s;
+
+    &__Active {
+      width: 0;
+      transition: 0.4s ease-in-out;
+    }
   }
 
   .BoxContainer {
@@ -45,7 +42,7 @@
     justify-content: right;
   }
 
-  &__box {
+  &__Box {
     width: 20px;
     max-height: 20px;
     margin-top: -12px;
@@ -54,10 +51,9 @@
     overflow: hidden;
     box-sizing: border-box;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-
     transition: max-height 0.4s ease-in-out 0s, width 0.4s ease-in-out 0.4s;
 
-    &__active {
+    &__Active {
       width: 100%;
       max-height: 500px;
       margin: -12px 0 0 auto;
@@ -65,7 +61,7 @@
       transition: width 0.4s ease-in-out 0s, max-height 0.4s ease-in-out 0.4s;
     }
 
-    &__collapse {
+    &__Collapse {
       width: 15px;
       border-top: 2px solid white;
       margin-top: 20px;
@@ -74,22 +70,29 @@
       opacity: 0;
       transition: opacity 0.2s ease-in;
 
-      &__active {
-        @extend .CaseStudy__box__collapse;
+      &__Active {
+        @extend .CaseStudy__Box__Collapse;
         opacity: 1;
         transition: opacity 0.2s ease-in 500ms;
       }
     }
 
-    &__content {
+    &__Content {
       padding: 40px 40px 0 40px;
+      opacity: 0;
+      transition: opacity 0.2s ease-in;
 
-      &__title {
+      &__Active {
+        @extend .CaseStudy__Box__Content;
+        opacity: 1;
+        transition: opacity 0.2s ease-in 500ms;
+      }
+
+      &__Title {
         font-family: 'Shrimp', sans-serif;
         text-transform: uppercase;
         letter-spacing: 2px;
         margin-bottom: 20px;
-
         font-size: 30px;
         color: white;
       }
@@ -99,11 +102,6 @@
       }
     }
   }
-}
-
-.ActiveLine {
-  width: 0;
-  transition: 0.4s ease-in-out;
 }
 
 .ActiveTitle {

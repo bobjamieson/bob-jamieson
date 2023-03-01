@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className={styles.FooterContainer}>
       <div className={styles.Footer}>
-        <div className={`${styles.Footer__Content} container`}>
+        <div className={`${styles.Footer__Content} Container`}>
           <Image
             src={logo}
             alt='logo'

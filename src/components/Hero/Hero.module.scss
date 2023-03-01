@@ -5,11 +5,11 @@
   height: 50svh;
   display: flex;
   justify-content: center;
-  align-items: end;
-  margin-top: 4.3%;
+  align-items: flex-end;
+  margin-top: 10%;
 
   @include mq('sm') {
-    margin-top: 90px;
+    margin-top: 120px;
   }
 }
 
@@ -20,25 +20,66 @@
     height: auto;
     max-width: 550px;
     transition: all 0.2s ease-in-out;
+    filter: contrast(1.1);
+    animation: imageFadeIn 1.5s normal forwards ease;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
 
     @include mq('sm') {
       width: 100%;
+    }
+
+    @keyframes imageFadeIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
   }
 }
 
 .Line {
   border-bottom: 2px solid $line-purple;
-  margin-top: -4.3%;
+  margin-top: -4.6%;
+  animation: lineFadeIn 1s normal forwards ease;
 
   @include mq('md') {
     margin-top: -28px;
+  }
+
+  @keyframes lineFadeIn {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
   }
 }
 
 .HeroTextContainer {
   height: 50vh;
   height: 50svh;
+  animation: textFadeIn 1.5s normal forwards ease;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+
+  @keyframes textFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 .HeroText {
@@ -53,7 +94,7 @@
     margin-top: 30px;
   }
 
-  &__link {
+  &__Link {
     font-family: Shrimp;
     text-transform: uppercase;
     color: $link-grey;

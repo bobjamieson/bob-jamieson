@@ -4,19 +4,28 @@ import Image from 'next/image'
 import logo from 'public/logo.svg'
 import RandomColour from '@/src/utils/RandomColour'
 import { useState } from 'react'
+import TopBar from '../TopBar/TopBar.component'
 
 const PrimaryNav = () => {
+  // Menu Burger State
   const [burger, setBurger] = useState(false)
-  const [hoveredItem, setHoveredItem] = useState(null)
 
-  const handleMouseEnter = (itemId) => {
+  // Hovered Menu Item
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+
+  /* 
+  When mouse hovers on menu item, the state is set to string of of the items ID.
+  If the ID of the hovered item matches the mapped item, it returns the string wrapped in the RandomColour util.
+  */
+  const handleMouseEnter = (itemId: string): void => {
     setHoveredItem(itemId)
   }
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (): void => {
     setHoveredItem(null)
   }
 
+  // Stores menu items
   const menuItems = [
     {
       id: 'case-studies',
@@ -28,8 +37,9 @@ const PrimaryNav = () => {
   ]
 
   return (
-    <>
-      <div className={`${styles.PrimaryNavMd} container`}>
+    <div className={styles.PrimaryNavContainer}>
+      <TopBar />
+      <div className={`${styles.PrimaryNav} Container`}>
         <Link href='/'>
           <Image
             src={logo}
@@ -39,7 +49,7 @@ const PrimaryNav = () => {
           />
         </Link>
 
-        <div className={styles.Nav}>
+        <nav className={styles.Nav}>
           <ul className='P__PrimaryNav'>
             {menuItems.map((item) => (
               <li key={item.id}>
@@ -58,12 +68,12 @@ const PrimaryNav = () => {
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
 
         <div className={styles.NavBurger}>
           <div className={styles.BurgerContainer}>
             <img
-              className={styles.Hamburger}
+              className={styles.Burger}
               src={
                 burger
                   ? '/icons/hamburger-active.svg'
@@ -74,7 +84,7 @@ const PrimaryNav = () => {
           </div>
         </div>
         {burger && (
-          <div className={styles.NavBurger__ItemsContainer}>
+          <nav className={styles.NavBurger__ItemsContainer}>
             <ul
               className={`${styles.NavBurger__ItemsContainer__Items} P__PrimaryNav`}
             >
@@ -95,10 +105,10 @@ const PrimaryNav = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         )}
       </div>
-    </>
+    </div>
   )
 }
 
