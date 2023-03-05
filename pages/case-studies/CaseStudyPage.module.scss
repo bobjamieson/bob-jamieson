@@ -1,5 +1,15 @@
 @import '/src/styles/theme.module.scss';
 
+.ContentContainer {
+  @include mq('md') {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+}
+
 .CaseStudy {
   &__Container {
     margin-bottom: 100px;
@@ -50,7 +60,8 @@
 
       img {
         width: 100%;
-        border: 2px solid;
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
       }
     }
 
@@ -67,34 +78,37 @@
 
     &__List {
       width: 100%;
-      overflow: hidden;
+
       ul {
         display: flex;
-        flex-wrap: nowrap;
-        margin: 0;
-        padding: 0;
+        flex-wrap: wrap;
+        justify-content: flex-start;
         list-style: none;
-        animation: scroll 8s linear infinite;
-        @include mq('sm') {
-          animation: scroll 10s linear infinite;
-        }
+        gap: 20px;
+        // animation: scroll 8s linear infinite;
+        // @include mq('sm') {
+        //   animation: scroll 10s linear infinite;
+        // }
         li {
-          flex: 0 0 auto;
-          margin-right: 20px;
-        }
-      }
-      @keyframes scroll {
-        0% {
-          transform: translateX(100%);
-        }
+          // flex: 0 0 auto;
 
-        100% {
-          transform: translateX(-140%);
-          @include mq('sm') {
-            transform: translateX(-105%);
-          }
+          color: white;
+          padding: 10px 15px;
+          border-radius: 20px;
         }
       }
+      // @keyframes scroll {
+      //   0% {
+      //     transform: translateX(100%);
+      //   }
+
+      //   100% {
+      //     transform: translateX(-140%);
+      //     @include mq('sm') {
+      //       transform: translateX(-105%);
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -102,23 +116,18 @@
     margin-bottom: 100px;
     width: 100%;
     @include mq('md') {
-      width: 60%;
+      max-width: 740px;
     }
 
     h2 {
-      font-family: $case-study-font-family;
-      font-size: 14px;
-      text-transform: uppercase;
-      padding-bottom: 10px;
-      letter-spacing: 0.1em;
-      font-weight: 300;
+      @extend .H2;
     }
   }
 
   &__SideBar {
     width: 100%;
     @include mq('md') {
-      width: 40%;
+      max-width: 740px;
     }
   }
 }
@@ -129,12 +138,5 @@
   }
   100% {
     width: 100%;
-  }
-}
-
-.ContentContainer {
-  @include mq('md') {
-    display: flex;
-    gap: 30px;
   }
 }

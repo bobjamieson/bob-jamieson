@@ -5,10 +5,8 @@ import { CaseStudyPageProps } from './CaseStudyPage.model'
 import colorForIndex from '@/src/utils/ColorForIndex'
 // @ts-ignore
 import { Markup } from 'react-render-markup'
-import Button from '@/src/components/Button/Button.component'
 import PostSideBar from '@/src/components/PostSideBar/PostSideBar.component'
-import { useEffect, useRef } from 'react'
-import { isBrowser } from '@/src/utils/isBrowser'
+import { useEffect } from 'react'
 
 const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   caseStudy,
@@ -16,27 +14,34 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 }) => {
   const currentCaseStudy = caseStudy?.data[currentIndex]
 
+  useEffect(() => {
+    const techListItems = document.querySelectorAll(
+      '.TechList li'
+    ) as NodeListOf<HTMLElement>
+
+    if (techListItems) {
+      techListItems.forEach((item) => {
+        item.style.background = colorForIndex(currentIndex)
+      })
+    }
+  }, [currentIndex])
+
   return (
     <>
       <div className={`${styles.CaseStudy__Container} Container`}>
         <div className={styles.CaseStudy__Header}>
           <div className={styles.CaseStudy__Header__Title}>
-            <p className='P__CaseStudyPage__Number'>
+            <p className='SubTitle'>
               {`Case study ${currentIndex >= 10 ? '0' : '00'}${
                 currentIndex + 1
               }`}
             </p>
-            <h1
-              className='H1 H1__CaseStudyPage'
-              style={{ color: colorForIndex(currentIndex) }}
-            >
+            <h1 className='H1' style={{ color: colorForIndex(currentIndex) }}>
               {currentCaseStudy?.attributes.title}
             </h1>
             <hr className={styles.CaseStudy__Header__Line} />
 
-            <div
-              className={`${styles.CaseStudy__Header__List} P__CaseStudyPage__List`}
-            >
+            <div className={`${styles.CaseStudy__Header__List} P__Tags`}>
               <Markup markup={currentCaseStudy?.attributes.techlist} />
             </div>
           </div>
@@ -54,7 +59,7 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
           {/* Body */}
           <div className={styles.CaseStudy__Body}>
             <Markup
-              markup={`<div className='P__CaseStudyPage__Body'>${currentCaseStudy?.attributes.body}</div>`}
+              markup={`<div className='P'>${currentCaseStudy?.attributes.body}</div>`}
             />
           </div>
           <div className={styles.CaseStudy__SideBar}>

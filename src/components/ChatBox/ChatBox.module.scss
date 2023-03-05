@@ -1,0 +1,60 @@
+@import 'src/styles/theme.module.scss';
+
+.ChatBoxContainer {
+  margin: 0 30px 100px 30px;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  padding: 30px;
+  margin-bottom: 100px;
+
+  @include mq('sm') {
+    margin: 0 auto 100px auto;
+    max-width: 550px;
+  }
+
+  p:not(:last-child),
+  form,
+  label,
+  input,
+  .ChatBoxMessages {
+    margin-bottom: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    padding: 10px;
+    border-radius: $border-radius;
+    border: 2px solid;
+    font-family: Poppins;
+    letter-spacing: 1px;
+  }
+
+  button {
+    padding: 15px;
+    background: black;
+    border: none;
+    color: white;
+    border-radius: $border-radius;
+  }
+}
+
+.ChatBoxMessages {
+  overflow-y: scroll;
+  max-height: 300px;
+  border: 2px solid lightgrey;
+  border-radius: $border-radius;
+  padding: 30px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(232 232 232);
+    border-radius: 10px;
+  }
+}

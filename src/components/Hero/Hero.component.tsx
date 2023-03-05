@@ -34,7 +34,7 @@ const Hero = ({ hero }: any) => {
             <h1 className='H1 H1__Hero' id='HeroText'>
               <Markup markup={hero?.attributes?.title} />
             </h1>
-            <Link href='/about' className={styles.HeroText__Link}>
+            <Link href='/about' className='HeroSubtitle'>
               Other things.
             </Link>
           </div>

@@ -5,6 +5,7 @@ import logo from 'public/logo.svg'
 import RandomColour from '@/src/utils/RandomColour'
 import { useState } from 'react'
 import TopBar from '../TopBar/TopBar.component'
+import { isBrowser } from '@/src/utils/isBrowser'
 
 const PrimaryNav = () => {
   // Menu Burger State
@@ -25,6 +26,12 @@ const PrimaryNav = () => {
     setHoveredItem(null)
   }
 
+  if (isBrowser()) {
+    window.addEventListener('scroll', () =>
+      burger ? setBurger(!burger) : null
+    )
+  }
+
   // Stores menu items
   const menuItems = [
     {
@@ -41,16 +48,11 @@ const PrimaryNav = () => {
       <TopBar />
       <div className={`${styles.PrimaryNav} Container`}>
         <Link href='/'>
-          <Image
-            src={logo}
-            alt='logo'
-            className={styles.Logo}
-            priority={true}
-          />
+          <Image src={logo} alt='logo' className={styles.Logo} priority />
         </Link>
 
         <nav className={styles.Nav}>
-          <ul className='P__PrimaryNav'>
+          <ul className='P__Nav'>
             {menuItems.map((item) => (
               <li key={item.id}>
                 <Link href={item.href}>
@@ -85,9 +87,7 @@ const PrimaryNav = () => {
         </div>
         {burger && (
           <nav className={styles.NavBurger__ItemsContainer}>
-            <ul
-              className={`${styles.NavBurger__ItemsContainer__Items} P__PrimaryNav`}
-            >
+            <ul className={`${styles.NavBurger__ItemsContainer__Items} P__Nav`}>
               {menuItems.map((item) => (
                 <li key={item.id} onClick={() => setBurger(!burger)}>
                   <Link href={item.href}>

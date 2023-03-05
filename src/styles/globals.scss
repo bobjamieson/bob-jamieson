@@ -41,7 +41,7 @@ a {
   max-width: 1440px;
 
   @include mq('sm') {
-    // margin: 0 auto;
+    margin: 0 auto;
     padding: 0 50px 0 50px;
   }
 }
