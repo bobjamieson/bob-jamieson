@@ -44,52 +44,19 @@ const PrimaryNav = () => {
   ]
 
   return (
-    <div className={styles.PrimaryNavContainer}>
-      <TopBar />
-      <div className={`${styles.PrimaryNav} Container`}>
-        <Link href='/'>
-          <Image src={logo} alt='logo' className={styles.Logo} priority />
-        </Link>
+    <>
+      <div className={styles.NavSpacer} />
+      <div className={styles.PrimaryNavContainer}>
+        <TopBar />
+        <div className={`${styles.PrimaryNav} Container`}>
+          <Link href='/'>
+            <Image src={logo} alt='logo' className={styles.Logo} priority />
+          </Link>
 
-        <nav className={styles.Nav}>
-          <ul className='P__Nav'>
-            {menuItems.map((item) => (
-              <li key={item.id}>
-                <Link href={item.href}>
-                  <span
-                    onMouseEnter={() => handleMouseEnter(item.id)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {hoveredItem === item.id ? (
-                      <RandomColour>{item.text}</RandomColour>
-                    ) : (
-                      <span>{item.text}</span>
-                    )}
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className={styles.NavBurger}>
-          <div className={styles.BurgerContainer}>
-            <img
-              className={styles.Burger}
-              src={
-                burger
-                  ? '/icons/hamburger-active.svg'
-                  : '/icons/hamburger-inactive.svg'
-              }
-              onClick={() => setBurger(!burger)}
-            />
-          </div>
-        </div>
-        {burger && (
-          <nav className={styles.NavBurger__ItemsContainer}>
-            <ul className={`${styles.NavBurger__ItemsContainer__Items} P__Nav`}>
+          <nav className={styles.Nav}>
+            <ul className='P__Nav'>
               {menuItems.map((item) => (
-                <li key={item.id} onClick={() => setBurger(!burger)}>
+                <li key={item.id}>
                   <Link href={item.href}>
                     <span
                       onMouseEnter={() => handleMouseEnter(item.id)}
@@ -106,9 +73,47 @@ const PrimaryNav = () => {
               ))}
             </ul>
           </nav>
-        )}
+
+          <div className={styles.NavBurger}>
+            <div className={styles.BurgerContainer}>
+              <img
+                className={styles.Burger}
+                src={
+                  burger
+                    ? '/icons/hamburger-active.svg'
+                    : '/icons/hamburger-inactive.svg'
+                }
+                onClick={() => setBurger(!burger)}
+              />
+            </div>
+          </div>
+          {burger && (
+            <nav className={styles.NavBurger__ItemsContainer}>
+              <ul
+                className={`${styles.NavBurger__ItemsContainer__Items} P__Nav`}
+              >
+                {menuItems.map((item) => (
+                  <li key={item.id} onClick={() => setBurger(!burger)}>
+                    <Link href={item.href}>
+                      <span
+                        onMouseEnter={() => handleMouseEnter(item.id)}
+                        onMouseLeave={handleMouseLeave}
+                      >
+                        {hoveredItem === item.id ? (
+                          <RandomColour>{item.text}</RandomColour>
+                        ) : (
+                          <span>{item.text}</span>
+                        )}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

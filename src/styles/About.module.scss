@@ -1,0 +1,35 @@
+@import '/src/styles/theme.module.scss';
+
+.Line {
+  border-top: 2px solid black;
+  height: 0;
+  min-width: 100vw;
+  margin-left: calc((100% - 100vw) / 2);
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  margin-top: -30px;
+}
+
+.Header {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  &__Image {
+    width: 150px;
+    height: 150px;
+    border-radius: 40px;
+    background: black;
+  }
+
+  &__Text {
+  }
+}
+
+.Body {
+  padding-top: 50px;
+  max-width: 700px;
+  margin: 0 auto;
+}

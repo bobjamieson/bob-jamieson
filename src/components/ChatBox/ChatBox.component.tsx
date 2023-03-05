@@ -1,5 +1,6 @@
 import styles from './ChatBox.module.scss'
 import React, { useState, useRef, useEffect } from 'react'
+import RandomColour from '@/src/utils/RandomColour'
 
 interface ChatMessage {
   question: string
@@ -43,9 +44,6 @@ const ChatBox = () => {
           ))}
         </div>
         <form onSubmit={handleSubmit}>
-          <label htmlFor='question' className='P'>
-            Ask me anything:
-          </label>
           <input
             id='question'
             type='text'
@@ -57,6 +55,13 @@ const ChatBox = () => {
             Talk
           </button>
         </form>
+        <p className='P'>
+          Can't be bothered with another AI chat? Read about me{' '}
+          <RandomColour>
+            <a href='/about'>here</a>
+          </RandomColour>
+          !
+        </p>
       </div>
     </article>
   )
