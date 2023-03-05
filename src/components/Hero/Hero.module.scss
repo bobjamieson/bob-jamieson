@@ -21,9 +21,7 @@
     max-width: 550px;
     transition: all 0.2s ease-in-out;
     filter: contrast(1.1);
-    animation: imageFadeIn 1.5s normal forwards ease;
-    animation-delay: 1s;
-    animation-fill-mode: forwards;
+    animation: imageFadeIn 1.5s normal forwards ease 1s, heroIdle 3s infinite;
     opacity: 0;
 
     @include mq('sm') {
@@ -38,6 +36,18 @@
       100% {
         opacity: 1;
         transform: translateX(0);
+      }
+    }
+
+    @keyframes heroIdle {
+      0%,
+      100% {
+        transform: perspective(15rem) rotateX(-0.5deg);
+        transform-origin: right bottom;
+        height: 90%;
+      }
+      50% {
+        transform: scale(1);
       }
     }
   }
@@ -65,7 +75,7 @@
 .HeroTextContainer {
   height: 50vh;
   height: 50svh;
-  animation: textFadeIn 1.5s normal forwards ease;
+  animation: textFadeIn 1s normal forwards ease;
   animation-delay: 1.5s;
   animation-fill-mode: forwards;
   opacity: 0;
@@ -92,22 +102,5 @@
 
   @include mq('md') {
     margin-top: 30px;
-  }
-
-  &__Link {
-    font-family: Shrimp;
-    text-transform: uppercase;
-    color: $link-grey;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    font-size: 3vw;
-
-    &:hover {
-      color: $colour-blue;
-    }
-
-    @include mq('md') {
-      font-size: 15px;
-    }
   }
 }

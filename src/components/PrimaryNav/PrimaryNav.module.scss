@@ -28,6 +28,7 @@
 .Logo {
   width: 40px;
   height: auto;
+  border-radius: $border-radius;
   transition: all 0.3s ease-in-out;
   @include mq('sm') {
     width: 50px;
@@ -70,16 +71,27 @@
     &__Items {
       background: white;
       min-width: max-content;
-      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
       position: absolute;
       list-style: none;
       text-align: right;
       padding: 20px;
+      height: 100vh;
+      height: 100dvh;
+      top: 0;
+      margin-right: -30px;
+      margin-top: -100px;
+      width: 100vw;
+      padding-top: 120px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
 
       li {
         min-width: max-content;
+        font-size: 15px;
         &:not(:last-child) {
-          padding-bottom: 20px;
+          padding-bottom: 50px;
         }
       }
     }

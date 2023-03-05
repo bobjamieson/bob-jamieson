@@ -32,17 +32,12 @@ const CaseStudies: React.FC<CaseStudyProps> = (caseStudies) => {
           onClick={() => handleClick(index)}
         >
           {/* Case Study Number is generated automatically based on index */}
-          <p
-            className='P__CaseStudy__Number'
-            style={{ color: colorForIndex(index) }}
-          >
+          <p className='SubTitle' style={{ color: colorForIndex(index) }}>
             {`Case study ${index >= 10 ? '0' : '00'}${index + 1}`}
           </p>
           {/* Case Study Title */}
           <p
-            className={`P__CaseStudy__Title ${
-              activeIndex === index ? styles.ActiveTitle : ''
-            }`}
+            className={`H2 ${activeIndex === index ? styles.ActiveTitle : ''}`}
           >
             {caseStudy?.attributes.title}
           </p>
@@ -83,18 +78,15 @@ const CaseStudies: React.FC<CaseStudyProps> = (caseStudies) => {
                       : styles.CaseStudy__Box__Content
                   }
                 >
-                  <p className={styles.CaseStudy__Box__Content__Title}>
-                    {caseStudy?.attributes.title}
-                  </p>
-                  <p className='P__CaseStudy__Snippet'>
-                    {caseStudy?.attributes.snippet}
-                  </p>
+                  <p className='H2__Card'>{caseStudy?.attributes.title}</p>
+                  <p className='P__Card'>{caseStudy?.attributes.snippet}</p>
                   <div className={styles.ButtonContainer}>
                     <Button
                       link={{
                         href: '/case-studies/[slug]',
                         as: `/case-studies/${caseStudy?.attributes.slug}`,
                       }}
+                      variant='card'
                     >
                       Read More
                     </Button>
