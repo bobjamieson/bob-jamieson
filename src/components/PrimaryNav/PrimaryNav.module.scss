@@ -1,5 +1,9 @@
 @import 'src/styles/theme.module.scss';
 
+.NavSpacer {
+  height: 140px;
+}
+
 .PrimaryNavContainer {
   z-index: 99;
   position: fixed;

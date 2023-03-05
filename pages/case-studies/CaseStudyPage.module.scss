@@ -17,7 +17,7 @@
 
   &__Header {
     position: relative;
-    margin: 150px auto 100px auto;
+    margin: 0 auto 100px auto;
     @include mq('sm') {
       transition: all 0.2s ease-in-out;
     }
@@ -29,15 +29,15 @@
       flex-direction: row-reverse;
     }
 
-    ul {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 30px;
-      @include mq('md') {
-        display: block;
-      }
-    }
+    // ul {
+    //   display: flex;
+    //   justify-content: space-between;
+    //   flex-wrap: wrap;
+    //   gap: 30px;
+    //   @include mq('md') {
+    //     display: block;
+    //   }
+    // }
 
     &__Title {
       width: 100%;
@@ -76,40 +76,24 @@
       z-index: -1;
     }
 
-    &__List {
-      width: 100%;
+    // &__List {
+    //   width: 100%;
 
-      ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        list-style: none;
-        gap: 20px;
-        // animation: scroll 8s linear infinite;
-        // @include mq('sm') {
-        //   animation: scroll 10s linear infinite;
-        // }
-        li {
-          // flex: 0 0 auto;
+    //   ul {
+    //     display: flex;
+    //     flex-wrap: wrap;
+    //     justify-content: flex-start;
+    //     list-style: none;
+    //     gap: 20px;
 
-          color: white;
-          padding: 10px 15px;
-          border-radius: 20px;
-        }
-      }
-      // @keyframes scroll {
-      //   0% {
-      //     transform: translateX(100%);
-      //   }
+    //     li {
+    //       color: white;
+    //       padding: 10px 15px;
+    //       border-radius: 20px;
+    //     }
+    //   }
 
-      //   100% {
-      //     transform: translateX(-140%);
-      //     @include mq('sm') {
-      //       transform: translateX(-105%);
-      //     }
-      //   }
-      // }
-    }
+    // }
   }
 
   &__Body {

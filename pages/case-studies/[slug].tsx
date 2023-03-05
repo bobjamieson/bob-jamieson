@@ -7,6 +7,7 @@ import colorForIndex from '@/src/utils/ColorForIndex'
 import { Markup } from 'react-render-markup'
 import PostSideBar from '@/src/components/PostSideBar/PostSideBar.component'
 import { useEffect } from 'react'
+import Head from 'next/head'
 
 const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
   caseStudy,
@@ -28,6 +29,15 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 
   return (
     <>
+      <Head>
+        <title>{`Bob Jamieson // ${currentCaseStudy?.attributes.title}`}</title>
+        <meta
+          name='description'
+          content={`A case study of the ${currentCaseStudy?.attributes.title} project.`}
+        />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <div className={`${styles.CaseStudy__Container} Container`}>
         <div className={styles.CaseStudy__Header}>
           <div className={styles.CaseStudy__Header__Title}>
@@ -41,7 +51,7 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             </h1>
             <hr className={styles.CaseStudy__Header__Line} />
 
-            <div className={`${styles.CaseStudy__Header__List} P__Tags`}>
+            <div className={`Tags P__Tags`}>
               <Markup markup={currentCaseStudy?.attributes.techlist} />
             </div>
           </div>
