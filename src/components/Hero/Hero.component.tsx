@@ -7,8 +7,8 @@ import Image from 'next/image'
 import { FunctionComponent } from 'react'
 import { HeroProps } from '@/src/types'
 
-const Hero: FunctionComponent<HeroProps> = ({ hero }) => {
-  const heroImage = hero?.attributes.image.data.attributes.url
+const Hero: FunctionComponent<HeroProps> = (props) => {
+  const heroImage = props?.attributes.image.data.attributes.url
   let heroTitle
   if (isBrowser()) {
     heroTitle = document.getElementsByClassName('.H1__Hero')
@@ -38,7 +38,7 @@ const Hero: FunctionComponent<HeroProps> = ({ hero }) => {
         <div className={styles.HeroTextContainer}>
           <div className={styles.HeroText}>
             <h1 className='H1 H1__Hero' id='HeroText'>
-              <Markup markup={hero?.attributes?.title} />
+              <Markup markup={props?.attributes?.title} />
             </h1>
             <Link href='/about' className='HeroSubtitle'>
               Other things.
