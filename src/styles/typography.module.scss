@@ -4,7 +4,7 @@
 //Shared font-family
 
 $primary-font-family: Shrimp;
-$secondary-font-family: Poppins;
+$secondary-font-family: Poppins, sans-serif;
 
 // Primary Typography ###############################
 .H1,
@@ -31,6 +31,7 @@ $secondary-font-family: Poppins;
 .H2 {
   font-size: 16px;
   margin-bottom: 20px;
+  line-height: 1.4em;
 
   &__Card {
     @extend .H2;
@@ -72,6 +73,7 @@ $secondary-font-family: Poppins;
 .P {
   font-size: 16px;
   letter-spacing: 1.5px;
+  margin-bottom: 30px;
 
   &__Card {
     @extend .P;
@@ -120,7 +122,6 @@ $secondary-font-family: Poppins;
     &__Response {
       @extend .P;
       font-size: 16px;
-      margin-bottom: 20px;
     }
 
     &__Button {

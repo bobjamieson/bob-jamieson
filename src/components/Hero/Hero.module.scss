@@ -6,12 +6,17 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  margin-top: -60px;
+  @include mq('sm') {
+    margin-top: 20px;
+  }
 }
 
 .HeroImage {
   &__Image {
     width: 90%;
     height: auto;
+    max-height: 50vh;
     max-width: 550px;
     transition: all 0.2s ease-in-out;
     filter: contrast(1.1);
@@ -20,6 +25,7 @@
 
     @include mq('sm') {
       width: 100%;
+      height: auto;
     }
 
     @keyframes imageFadeIn {
@@ -53,7 +59,7 @@
   animation: lineFadeIn 1s normal forwards ease;
 
   @include mq('md') {
-    margin-top: -28px;
+    margin-top: -1.75em;
   }
 
   @keyframes lineFadeIn {

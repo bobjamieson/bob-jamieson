@@ -1,10 +1,16 @@
+@import './breakpoints.module.scss';
+
 .Tags {
   width: 100%;
   display: flex;
-  justify-content: center;
   max-width: 700px;
+  justify-content: center;
   flex-wrap: wrap;
   margin: 0 auto;
+
+  @include mq('md') {
+    justify-content: left;
+  }
 
   ul {
     display: flex;

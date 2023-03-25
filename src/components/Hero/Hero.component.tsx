@@ -3,8 +3,12 @@ import Link from 'next/link'
 import { isBrowser } from '@/src/utils/isBrowser'
 // @ts-ignore
 import { Markup } from 'react-render-markup'
+import Image from 'next/image'
+import { FunctionComponent } from 'react'
+import { HeroProps } from '@/src/types'
 
-const Hero = ({ hero }: any) => {
+const Hero: FunctionComponent<HeroProps> = ({ hero }) => {
+  const heroImage = hero?.attributes.image.data.attributes.url
   let heroTitle
   if (isBrowser()) {
     heroTitle = document.getElementsByClassName('.H1__Hero')
@@ -15,9 +19,11 @@ const Hero = ({ hero }: any) => {
         <div className={styles.HeroImageContainer}>
           {/* Hero image */}
           <div className={styles.HeroImage}>
-            <img
-              src={`${hero?.attributes.image.data.attributes.url}`}
+            <Image
+              src={heroImage}
               alt='hero image'
+              width='550'
+              height='384'
               className={styles.HeroImage__Image}
             />
           </div>
