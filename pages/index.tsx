@@ -20,8 +20,8 @@ const Home: NextPage<HomeProps> = (props) => {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Hero hero={props.hero} />
-      <CaseStudies caseStudies={props.caseStudies} />
+      <Hero {...props.hero} />
+      <CaseStudies caseStudies={props.caseStudies as any} />
       <ChatBox />
     </main>
   )
