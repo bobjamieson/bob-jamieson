@@ -1,5 +1,5 @@
 export interface CaseStudyProps {
-  currentIndex: number
+  currentIndex?: number
   caseStudies: [
     data: {
       id: string

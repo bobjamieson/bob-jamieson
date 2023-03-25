@@ -9,10 +9,6 @@ import { HeroProps } from '@/src/types'
 
 const Hero: FunctionComponent<HeroProps> = (props) => {
   const heroImage = props?.attributes.image.data.attributes.url
-  let heroTitle
-  if (isBrowser()) {
-    heroTitle = document.getElementsByClassName('.H1__Hero')
-  }
   return (
     <div className={styles.Hero}>
       <div className='Container'>
@@ -21,7 +17,7 @@ const Hero: FunctionComponent<HeroProps> = (props) => {
           <div className={styles.HeroImage}>
             <Image
               src={heroImage}
-              alt='hero image'
+              alt=''
               width='550'
               height='384'
               className={styles.HeroImage__Image}
