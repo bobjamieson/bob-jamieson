@@ -22,14 +22,12 @@ export interface CaseStudyProps {
 }
 
 export interface HeroProps {
-  hero: {
-    attributes: {
-      title: string
-      image: {
-        data: {
-          attributes: {
-            url: string
-          }
+  attributes: {
+    title: string
+    image: {
+      data: {
+        attributes: {
+          url: string
         }
       }
     }
