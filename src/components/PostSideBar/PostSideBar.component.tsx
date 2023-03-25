@@ -1,10 +1,16 @@
 import Button from '../Button/Button.component'
 import colorForIndex from '@/src/utils/ColorForIndex'
+import styles from './PostSideBar.module.scss'
+import { CaseStudyProps } from '@/src/types'
+import { FunctionComponent } from 'react'
 
-const PostSideBar = ({ caseStudies, currentIndex }) => {
+const PostSideBar: FunctionComponent<CaseStudyProps> = ({
+  caseStudies,
+  currentIndex,
+}) => {
   return (
     <div>
-      {caseStudies?.data?.map((caseStudy: any, index: number) => (
+      {caseStudies?.map((caseStudy: any, index: number) => (
         <div key={index}>
           {currentIndex !== index && (
             <Button
@@ -19,7 +25,7 @@ const PostSideBar = ({ caseStudies, currentIndex }) => {
 
                 <div>
                   <p>{caseStudy?.attributes.title}</p>
-                  <p>▶</p>
+                  <p className={styles.Arrow}>▶</p>
                 </div>
               </div>
             </Button>

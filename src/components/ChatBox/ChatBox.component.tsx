@@ -1,6 +1,7 @@
 import styles from './ChatBox.module.scss'
 import React, { useState, useRef, useEffect } from 'react'
 import RandomColour from '@/src/utils/RandomColour'
+import Link from 'next/link'
 
 interface ChatMessage {
   question: string
@@ -56,9 +57,9 @@ const ChatBox = () => {
           </button>
         </form>
         <p className='P'>
-          Can't be bothered with another AI chat? Read about me{' '}
+          Cant be bothered with another AI chat? Read about me
           <RandomColour>
-            <a href='/about'>here</a>
+            <Link href='/about'> here</Link>
           </RandomColour>
           !
         </p>

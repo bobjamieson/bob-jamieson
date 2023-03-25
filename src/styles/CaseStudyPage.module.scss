@@ -29,16 +29,6 @@
       flex-direction: row-reverse;
     }
 
-    // ul {
-    //   display: flex;
-    //   justify-content: space-between;
-    //   flex-wrap: wrap;
-    //   gap: 30px;
-    //   @include mq('md') {
-    //     display: block;
-    //   }
-    // }
-
     &__Title {
       width: 100%;
       margin-bottom: 50px;
@@ -54,12 +44,14 @@
 
     &__Image {
       width: 100%;
+
       @include mq('md') {
         width: 60%;
       }
 
       img {
         width: 100%;
+        height: auto;
         box-shadow: $box-shadow;
         border-radius: $border-radius;
       }
@@ -75,43 +67,37 @@
       right: 0;
       z-index: -1;
     }
-
-    // &__List {
-    //   width: 100%;
-
-    //   ul {
-    //     display: flex;
-    //     flex-wrap: wrap;
-    //     justify-content: flex-start;
-    //     list-style: none;
-    //     gap: 20px;
-
-    //     li {
-    //       color: white;
-    //       padding: 10px 15px;
-    //       border-radius: 20px;
-    //     }
-    //   }
-
-    // }
   }
 
   &__Body {
-    margin-bottom: 100px;
+    margin-bottom: 150px;
     width: 100%;
     @include mq('md') {
-      max-width: 740px;
+      max-width: 550px;
+      margin: 0 auto 50px auto;
     }
 
     h2 {
       @extend .H2;
+    }
+
+    p {
+      @extend .P;
+      margin-bottom: 30px;
+    }
+
+    img {
+      width: 100%;
+      margin-bottom: 30px;
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
     }
   }
 
   &__SideBar {
     width: 100%;
     @include mq('md') {
-      max-width: 740px;
+      max-width: 550px;
     }
   }
 }

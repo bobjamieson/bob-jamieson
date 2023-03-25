@@ -1,10 +1,10 @@
 import styles from './CaseStudies.module.scss'
 import colorForIndex from '../../utils/ColorForIndex'
 import Button from '../Button/Button.component'
-import { useState } from 'react'
+import { FunctionComponent, useState } from 'react'
 import { CaseStudyProps } from '@/src/types'
 
-const CaseStudies: React.FC<CaseStudyProps> = (caseStudies) => {
+const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
   const [activeIndex, setActiveIndex] = useState(-1)
 
   const handleClick = (index: number) => {
@@ -24,7 +24,7 @@ const CaseStudies: React.FC<CaseStudyProps> = (caseStudies) => {
 
   return (
     <div className={styles.CaseStudies} id='CaseStudies'>
-      {caseStudies?.caseStudies?.map((caseStudy: any, index: number) => (
+      {caseStudies?.map((caseStudy: any, index: number) => (
         <article
           className={styles.CaseStudy}
           id={`case-study-${index}`}

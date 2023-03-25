@@ -1,15 +1,23 @@
 import { gql } from '@apollo/client'
 
 const GET_ALL_CASESTUDIES = gql`
-  query CaseStudies {
+  query {
     casestudies {
       data {
         id
         attributes {
+          slug
           title
           snippet
           body
-          slug
+          techlist
+          image {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
         }
       }
     }
@@ -17,7 +25,7 @@ const GET_ALL_CASESTUDIES = gql`
 `
 
 const GET_HERO = gql`
-  query Hero {
+  query {
     hero {
       data {
         attributes {

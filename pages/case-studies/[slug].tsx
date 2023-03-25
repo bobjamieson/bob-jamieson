@@ -1,19 +1,18 @@
 import React from 'react'
-import axios from 'axios'
-import styles from './CaseStudyPage.module.scss'
-import { CaseStudyPageProps } from './CaseStudyPage.model'
+import styles from '@/src/styles/CaseStudyPage.module.scss'
 import colorForIndex from '@/src/utils/ColorForIndex'
-// @ts-ignore
-import { Markup } from 'react-render-markup'
 import PostSideBar from '@/src/components/PostSideBar/PostSideBar.component'
 import { useEffect } from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
+// @ts-ignore
+import { Markup } from 'react-render-markup'
 
-const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
-  caseStudy,
-  currentIndex,
-}) => {
-  const currentCaseStudy = caseStudy?.data[currentIndex]
+import { getStaticProps, getStaticPaths } from 'pages/data/CaseStudyPage.data'
+export { getStaticProps, getStaticPaths }
+
+const CaseStudyPage = ({ caseStudies, currentIndex }: any) => {
+  const currentCaseStudy = caseStudies[currentIndex]
 
   useEffect(() => {
     const techListItems = document.querySelectorAll(
@@ -38,7 +37,12 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
+
+      {/* Content */}
+
       <div className={`${styles.CaseStudy__Container} Container`}>
+        {/* Header */}
+
         <div className={styles.CaseStudy__Header}>
           <div className={styles.CaseStudy__Header__Title}>
             <p className='SubTitle'>
@@ -56,14 +60,22 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             </div>
           </div>
 
-          {currentCaseStudy.attributes.image.data && (
+          {currentCaseStudy?.attributes.image.data && (
             <div className={styles.CaseStudy__Header__Image}>
-              <img
+              <Image
                 src={currentCaseStudy?.attributes.image?.data[0].attributes.url}
+                alt={`Screenshot of ${currentCaseStudy?.attributes.title} website.`}
+                width='786'
+                height='438'
               />
             </div>
           )}
         </div>
+
+        {/* 
+        Body content
+        Fetches body from rich text editor containing html markup
+        */}
 
         <div className={`${styles.ContentContainer}`}>
           {/* Body */}
@@ -73,7 +85,10 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
             />
           </div>
           <div className={styles.CaseStudy__SideBar}>
-            <PostSideBar caseStudies={caseStudy} currentIndex={currentIndex} />
+            <PostSideBar
+              caseStudies={caseStudies}
+              currentIndex={currentIndex}
+            />
           </div>
         </div>
       </div>
@@ -82,46 +97,3 @@ const CaseStudyPage: React.FC<CaseStudyPageProps> = ({
 }
 
 export default CaseStudyPage
-
-//Async for current page data
-export async function getStaticProps({ params }) {
-  const caseStudiesRes = await axios.get(
-    'http://localhost:1337/api/casestudies?populate=*'
-  )
-
-  const caseStudyData = caseStudiesRes.data.data
-
-  let currentIndex
-  //determines index of the individual case study data based on slug
-  caseStudyData.forEach((caseStudy, index) => {
-    if (caseStudy.attributes.slug === params.slug) {
-      currentIndex = index
-    }
-  })
-
-  return {
-    props: {
-      caseStudy: caseStudiesRes.data,
-      currentIndex,
-    },
-  }
-}
-
-export async function getStaticPaths() {
-  const caseStudiesRes = await axios.get(
-    'http://localhost:1337/api/casestudies?populate=*'
-  )
-
-  const paths = caseStudiesRes.data.data.map((caseStudy) => {
-    return {
-      params: {
-        slug: caseStudy.attributes.slug.toString(),
-      },
-    }
-  })
-
-  return {
-    paths,
-    fallback: false,
-  }
-}

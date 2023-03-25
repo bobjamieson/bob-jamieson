@@ -76,7 +76,7 @@ const PrimaryNav = () => {
 
           <div className={styles.NavBurger}>
             <div className={styles.BurgerContainer}>
-              <img
+              <Image
                 className={styles.Burger}
                 src={
                   burger
@@ -84,6 +84,9 @@ const PrimaryNav = () => {
                     : '/icons/hamburger-inactive.svg'
                 }
                 onClick={() => setBurger(!burger)}
+                alt='burger'
+                width='100'
+                height='100'
               />
             </div>
           </div>

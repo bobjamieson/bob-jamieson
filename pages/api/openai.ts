@@ -1,9 +1,14 @@
 // pages/api/chatbox.js
+
+import { NextApiRequest, NextApiResponse } from 'next'
 const OpenAI = require('openai-api')
 
-const openai = new OpenAI('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')
+const openai = new OpenAI(process.env.OPENAI_API_KEY)
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { query } = req
   const { question } = query
 

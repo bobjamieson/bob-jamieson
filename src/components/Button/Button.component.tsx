@@ -1,8 +1,13 @@
 import styles from './Button.module.scss'
-import { ButtonProps } from './Button.model'
+import { ButtonProps } from '@/src/types'
 import Link from 'next/link'
+import { FunctionComponent } from 'react'
 
-const Button: React.FC<ButtonProps> = ({ children, link, variant }) => {
+const Button: FunctionComponent<ButtonProps> = ({
+  children,
+  link,
+  variant,
+}) => {
   return (
     <Link
       href={link.href}
