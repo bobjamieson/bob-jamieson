@@ -10,6 +10,13 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
   const handleClick = (index: number) => {
     setActiveIndex(index === activeIndex ? -1 : index)
     if (index !== activeIndex) {
+      
+      /**
+       * NOTE:
+       * 
+       * I would probably abstract this out to a function called "scrollIntoView" so that it reads more declaratively
+       * and also keeps your functionality in concise little boxes with single responsibilities
+       */
       setTimeout(() => {
         const element = document.getElementById(`case-study-${index}`)
         if (element) {
@@ -27,6 +34,9 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
       {caseStudies?.map((caseStudy, index) => (
         <article
           className={styles.CaseStudy}
+          /**
+           * NOTE: As discussed previously, try to target the node using React API instead of the native JS DOM api
+           */
           id={`case-study-${index}`}
           key={index}
           onClick={() => handleClick(index)}
@@ -48,8 +58,18 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
             }`}
           />
           {/* Box */}
+
           <div className={styles.BoxContainer}>
             <div
+              /**
+               * NOTE:
+               * It's not normal to remove the base class when applying a modifier class like "active", it's common practice to keep the base class and then add other modifier classes on top that adjust its behaviour
+               * 
+               * Additionally, you might want to use the classnames package, as it gives fairly clean syntax (imo), like this:
+               * className={cn(styles.CaseStudy__Box, {
+               *  [activeIndex === index]: styles.CaseStudy__Box__Active
+               * })}
+               */
               className={
                 activeIndex === index
                   ? styles.CaseStudy__Box__Active

@@ -1,36 +1,34 @@
+export interface ImageModel {
+  data: {
+    attributes: {
+      url: string
+    }
+  }
+}
+
+export interface CaseStudyModel {
+  data: {
+    id: string
+    attributes: {
+      title: string
+      snippet: string
+      body: string
+      slug: string
+      techlist: string
+      image: ImageModel
+    }
+  }
+}
+
 export interface CaseStudyProps {
   currentIndex: number
-  caseStudies: [
-    data: {
-      id: string
-      attributes: {
-        title: string
-        snippet: string
-        body: string
-        slug: string
-        techlist: string
-        image: {
-          data: {
-            attributes: {
-              url: string
-            }
-          }
-        }
-      }
-    }
-  ]
+  caseStudies: CaseStudyModel[]
 }
 
 export interface HeroProps {
   attributes: {
     title: string
-    image: {
-      data: {
-        attributes: {
-          url: string
-        }
-      }
-    }
+    image: ImageModel
   }
 }
 
