@@ -24,7 +24,7 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
 
   return (
     <div className={styles.CaseStudies} id='CaseStudies'>
-      {caseStudies?.map((caseStudy: any, index: number) => (
+      {caseStudies?.map((caseStudy, index) => (
         <article
           className={styles.CaseStudy}
           id={`case-study-${index}`}

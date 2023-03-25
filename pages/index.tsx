@@ -8,7 +8,7 @@ export { getStaticProps }
 import { HomeProps } from 'src/types'
 import { NextPage } from 'next'
 
-const Home: NextPage<HomeProps> = ({ caseStudies, hero }) => {
+const Home: NextPage<HomeProps> = (props) => {
   return (
     <main>
       <Head>
@@ -20,8 +20,8 @@ const Home: NextPage<HomeProps> = ({ caseStudies, hero }) => {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Hero hero={hero} />
-      <CaseStudies caseStudies={caseStudies} />
+      <Hero hero={props.hero} />
+      <CaseStudies caseStudies={props.caseStudies} />
       <ChatBox />
     </main>
   )
