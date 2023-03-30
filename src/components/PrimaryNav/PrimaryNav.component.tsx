@@ -41,6 +41,7 @@ const PrimaryNav = () => {
     },
     { id: 'about', text: 'About', href: '/about' },
     { id: 'github', text: 'GitHub', href: 'https://github.com/bobjamieson' },
+    { id: 'contact', text: 'Contact', href: '#Contact' },
   ]
 
   return (

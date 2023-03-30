@@ -1,17 +1,18 @@
 import styles from './CaseStudies.module.scss'
 import colorForIndex from '../../utils/ColorForIndex'
 import Button from '../Button/Button.component'
-import { FunctionComponent, useState } from 'react'
-import { CaseStudyProps } from '@/src/types'
+import { FunctionComponent, useRef, useState } from 'react'
+import { CaseStudyProps } from './CaseStudies.model'
 
-const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
+const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
   const [activeIndex, setActiveIndex] = useState(-1)
 
-  const handleClick = (index: number) => {
-    setActiveIndex(index === activeIndex ? -1 : index)
+  const caseStudyRefs = useRef<(HTMLElement | null)[]>([])
+
+  const scrollIntoViewport = (index: number) => {
     if (index !== activeIndex) {
       setTimeout(() => {
-        const element = document.getElementById(`case-study-${index}`)
+        const element = caseStudyRefs.current[index]
         if (element) {
           element.scrollIntoView({
             behavior: 'smooth',
@@ -22,16 +23,21 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
     }
   }
 
+  const handleClick = (index: number) => {
+    setActiveIndex(index === activeIndex ? -1 : index)
+    scrollIntoViewport(index)
+  }
+
   return (
     <div className={styles.CaseStudies} id='CaseStudies'>
-      {caseStudies?.map((caseStudy, index) => (
+      {props?.caseStudies?.map((caseStudy, index) => (
         <article
           className={styles.CaseStudy}
-          id={`case-study-${index}`}
+          ref={(el) => (caseStudyRefs.current[index] = el)}
           key={index}
           onClick={() => handleClick(index)}
         >
-          {/* Case Study Number is generated automatically based on index */}
+          {/* Case Study Number is based on case study index + 1 (start at 1 instead of 0) */}
           <p className='SubTitle' style={{ color: colorForIndex(index) }}>
             {`Case study ${index >= 10 ? '0' : '00'}${index + 1}`}
           </p>
@@ -39,22 +45,19 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
           <p
             className={`H2 ${activeIndex === index ? styles.ActiveTitle : ''}`}
           >
-            {caseStudy?.attributes.title}
+            {caseStudy?.attributes?.title}
           </p>
-          {/* Line */}
+          {/* Line ----------------------*/}
           <hr
-            className={`${styles.CaseStudy__Line} ${
-              activeIndex === index ? styles.CaseStudy__Line__Active : ''
-            }`}
+            className={`${styles.CaseStudy__Line} 
+            ${activeIndex === index ? styles.CaseStudy__Line__Active : ''}`}
           />
-          {/* Box */}
+          {/* Box ------------------------*/}
           <div className={styles.BoxContainer}>
             <div
-              className={
-                activeIndex === index
-                  ? styles.CaseStudy__Box__Active
-                  : styles.CaseStudy__Box
-              }
+              className={`${styles.CaseStudy__Box} ${
+                activeIndex === index ? styles.CaseStudy__Box__Active : ''
+              }`}
               style={{ background: colorForIndex(index) }}
             >
               {/* Box Content */}
@@ -63,28 +66,28 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = ({ caseStudies }) => {
 
                 <div className={styles.CollapseContainer}>
                   <hr
-                    className={
+                    className={`${styles.CaseStudy__Box__Collapse} ${
                       activeIndex === index
                         ? styles.CaseStudy__Box__Collapse__Active
-                        : styles.CaseStudy__Box__Collapse
-                    }
+                        : ''
+                    }`}
                   />
                 </div>
 
                 <div
-                  className={
+                  className={`${styles.CaseStudy__Box__Content} ${
                     activeIndex === index
                       ? styles.CaseStudy__Box__Content__Active
-                      : styles.CaseStudy__Box__Content
-                  }
+                      : ''
+                  }`}
                 >
-                  <p className='H2__Card'>{caseStudy?.attributes.title}</p>
-                  <p className='P__Card'>{caseStudy?.attributes.snippet}</p>
+                  <p className='H2__Card'>{caseStudy?.attributes?.title}</p>
+                  <p className='P__Card'>{caseStudy?.attributes?.snippet}</p>
                   <div className={styles.ButtonContainer}>
                     <Button
                       link={{
                         href: '/case-studies/[slug]',
-                        as: `/case-studies/${caseStudy?.attributes.slug}`,
+                        as: `/case-studies/${caseStudy?.attributes?.slug}`,
                       }}
                       variant='card'
                     >

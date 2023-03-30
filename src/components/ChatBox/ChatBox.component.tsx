@@ -2,13 +2,15 @@ import styles from './ChatBox.module.scss'
 import React, { useState, useRef, useEffect } from 'react'
 import RandomColour from '@/src/utils/RandomColour'
 import Link from 'next/link'
+import { FunctionComponent } from 'react'
+import { ChatBoxModel } from './ChatBox.model'
 
 interface ChatMessage {
   question: string
   answer: string
 }
 
-const ChatBox = () => {
+const ChatBox: FunctionComponent<ChatBoxModel> = (props) => {
   const [question, setQuestion] = useState('')
   const [chat, setChat] = useState<ChatMessage[]>([])
   const messagesContainerRef = useRef<HTMLDivElement>(null)
@@ -34,13 +36,13 @@ const ChatBox = () => {
   return (
     <article className={styles.ChatBoxContainer}>
       <div className={styles.ChatBox}>
-        <p className='SubTitle'>(Prototype)</p>
-        <h2 className='H2'>Talk to AI Bob</h2>
+        <p className='SubTitle'>{props?.attributes?.subtitle}</p>
+        <h2 className='H2'>{props?.attributes?.title}</h2>
         <div className={styles.ChatBoxMessages} ref={messagesContainerRef}>
           {chat.map((message, index) => (
             <div key={index}>
-              <p className='P__Chat__Question'>{message.question}</p>
-              <p className='P__Chat__Response'>{message.answer}</p>
+              <p className='P__Chat__Question'>You: {message.question}</p>
+              <p className='P__Chat__Response'>Bob 1.0: {message.answer}</p>
             </div>
           ))}
         </div>
@@ -49,15 +51,16 @@ const ChatBox = () => {
             id='question'
             type='text'
             value={question}
-            placeholder='eg. Tell me about yourself!'
+            placeholder={props?.attributes?.inputplaceholder}
             onChange={(event) => setQuestion(event.target.value)}
           />
           <button type='submit' className='P__Chat__Button'>
             Talk
           </button>
         </form>
-        <p className='P'>
-          Cant be bothered with another AI chat? Read about me
+        <p>
+          Note: He may not always tell the truth... learn the hard facts about
+          me
           <RandomColour>
             <Link href='/about'> here</Link>
           </RandomColour>

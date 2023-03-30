@@ -29,6 +29,27 @@
       flex-direction: row-reverse;
     }
 
+    &__Button {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      box-shadow: $box-shadow;
+
+      &:hover {
+        .CaseStudy__Header__Button__Icon {
+          transition: 200ms ease-in-out;
+          filter: invert(0);
+        }
+      }
+
+      &__Icon {
+        color: white;
+        filter: invert(1);
+        transform: translateY(-3px);
+        transition: 200ms ease-in-out;
+      }
+    }
+
     &__Title {
       width: 100%;
       margin-bottom: 50px;
@@ -73,7 +94,7 @@
     margin-bottom: 150px;
     width: 100%;
     @include mq('md') {
-      max-width: 550px;
+      max-width: $content-width;
       margin: 0 auto 50px auto;
     }
 
@@ -97,16 +118,7 @@
   &__SideBar {
     width: 100%;
     @include mq('md') {
-      max-width: 550px;
+      max-width: $content-width;
     }
-  }
-}
-
-@keyframes boxExpand {
-  0% {
-    width: 30px;
-  }
-  100% {
-    width: 100%;
   }
 }

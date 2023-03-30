@@ -38,6 +38,9 @@
     },
     "techlist": {
       "type": "richtext"
+    },
+    "link": {
+      "type": "string"
     }
   }
 }

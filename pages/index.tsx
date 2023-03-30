@@ -1,30 +1,33 @@
-import Head from 'next/head'
 import Hero from '@/src/components/Hero/Hero.component'
 import CaseStudies from '@/src/components/CaseStudies/CaseStudies.component'
 import ChatBox from '@/src/components/ChatBox/ChatBox.component'
 import React from 'react'
 import { getStaticProps } from './data/index.data'
-export { getStaticProps }
-import { HomeProps } from 'src/types'
+import { HomeProps } from './index.model'
 import { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 
 const Home: NextPage<HomeProps> = (props) => {
   return (
-    <main>
-      <Head>
-        <title>Bob Jamieson</title>
-        <meta name='description' content="A React dev's portfolio." />
-        <meta
-          name='viewport'
-          content='width=device-width, initial-scale=1, maximum-scale=1'
-        />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <Hero {...props.hero} />
-      <CaseStudies caseStudies={props.caseStudies as any} />
-      <ChatBox />
-    </main>
+    <>
+      <NextSeo
+        title={props.pageHome?.attributes?.title}
+        description={props.pageHome?.attributes?.description}
+      />
+      <main>
+        {props.hero && <Hero {...props.hero} />}
+        {props.caseStudies && (
+          <CaseStudies
+            caseStudies={props.caseStudies}
+            currentIndex={props.caseStudies[0].currentIndex}
+          />
+        )}
+
+        <ChatBox {...props.chatBox} />
+      </main>
+    </>
   )
 }
 
+export { getStaticProps }
 export default Home

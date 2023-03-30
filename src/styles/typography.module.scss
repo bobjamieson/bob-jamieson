@@ -67,12 +67,11 @@ $secondary-font-family: Poppins, sans-serif;
 .ButtonText,
 .Tags {
   font-family: $secondary-font-family;
-  letter-spacing: 0.1em;
+  letter-spacing: 1.5px;
 }
 
 .P {
   font-size: 16px;
-  letter-spacing: 1.5px;
   margin-bottom: 30px;
 
   &__Card {

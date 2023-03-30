@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "pageabouts",
+  "info": {
+    "singularName": "pageabout",
+    "pluralName": "pageabouts",
+    "displayName": "pageabout",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "metatitle": {
+      "type": "string"
+    },
+    "metadescription": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "skillstitle": {
+      "type": "string"
+    },
+    "skills": {
+      "displayName": "skill",
+      "type": "component",
+      "repeatable": true,
+      "component": "taglist.skill"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import Button from '../Button/Button.component'
 import colorForIndex from '@/src/utils/ColorForIndex'
 import styles from './PostSideBar.module.scss'
-import { CaseStudyProps } from '@/src/types'
+import { CaseStudyProps } from '../CaseStudies/CaseStudies.model'
 import { FunctionComponent } from 'react'
 
 const PostSideBar: FunctionComponent<CaseStudyProps> = ({

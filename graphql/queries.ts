@@ -1,5 +1,38 @@
 import { gql } from '@apollo/client'
 
+const GET_PAGE_HOME = gql`
+  query {
+    pagehome {
+      data {
+        attributes {
+          title
+          description
+        }
+      }
+    }
+  }
+`
+
+const GET_PAGE_ABOUT = gql`
+  query {
+    pageabout {
+      data {
+        attributes {
+          metatitle
+          metadescription
+          subtitle
+          title
+          body
+          skillstitle
+          skills {
+            skill
+          }
+        }
+      }
+    }
+  }
+`
+
 const GET_ALL_CASESTUDIES = gql`
   query {
     casestudies {
@@ -10,6 +43,7 @@ const GET_ALL_CASESTUDIES = gql`
           title
           snippet
           body
+          link
           techlist
           image {
             data {
@@ -30,6 +64,7 @@ const GET_HERO = gql`
       data {
         attributes {
           title
+          subtitle
           image {
             data {
               attributes {
@@ -49,4 +84,25 @@ const GET_HERO = gql`
   }
 `
 
-export { GET_ALL_CASESTUDIES, GET_HERO }
+const GET_CHATBOX = gql`
+  query {
+    chatbox {
+      data {
+        attributes {
+          subtitle
+          title
+          paragraph
+          inputplaceholder
+        }
+      }
+    }
+  }
+`
+
+export {
+  GET_PAGE_HOME,
+  GET_PAGE_ABOUT,
+  GET_ALL_CASESTUDIES,
+  GET_HERO,
+  GET_CHATBOX,
+}

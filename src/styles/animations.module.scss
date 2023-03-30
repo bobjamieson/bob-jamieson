@@ -1,0 +1,53 @@
+@import './breakpoints.module.scss';
+
+@keyframes fadeInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathing {
+  0%,
+  100% {
+    transform: perspective(15rem) rotateX(-0.5deg);
+    transform-origin: right bottom;
+    height: 90%;
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lineExpand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes boxExpand {
+  0% {
+    width: 30px;
+  }
+  100% {
+    width: 100%;
+  }
+}

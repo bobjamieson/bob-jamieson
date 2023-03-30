@@ -1,5 +1,5 @@
 import styles from './Button.module.scss'
-import { ButtonProps } from '@/src/types'
+import { ButtonProps } from './Button.model'
 import Link from 'next/link'
 import { FunctionComponent } from 'react'
 
@@ -17,6 +17,8 @@ const Button: FunctionComponent<ButtonProps> = ({
           ? styles.Card
           : variant === 'sidebar'
           ? styles.SideBar
+          : variant === 'caseLink'
+          ? styles.CaseLink
           : ''
       }
     >
