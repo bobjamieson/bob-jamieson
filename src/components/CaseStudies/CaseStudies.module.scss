@@ -14,8 +14,8 @@
   @include mq('md') {
     padding: 0;
     padding-top: 150px;
-    max-width: 550px;
-    min-width: 550px;
+    max-width: $content-width;
+    min-width: $content-width;
     margin: -150px auto 200px auto;
   }
 }

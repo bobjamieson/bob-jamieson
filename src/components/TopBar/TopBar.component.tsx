@@ -53,6 +53,10 @@ const TopBar = () => {
     }
 
     fetchData()
+
+    const intervalId = setInterval(fetchData, 5 * 60 * 1000)
+
+    return () => clearInterval(intervalId)
   }, [])
 
   return (

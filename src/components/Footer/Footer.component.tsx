@@ -4,17 +4,26 @@ import logo from '@/public/logo.svg'
 
 const Footer = () => {
   return (
-    <div className={styles.FooterContainer}>
+    <footer className={styles.FooterContainer}>
       <div className={styles.Footer}>
-        <div className={`${styles.Footer__Content} Container`}>
+        <div className={styles.Footer__Content}>
           <Image
             src={logo}
             alt='logo'
             className={styles.Footer__Content__Logo}
           />
+          <div className={styles.Footer__Content__Contact} id='Contact'>
+            <p className='H2'>Get in touch</p>
+            <a
+              className={`${styles.Footer__Content__Contact__Email} P`}
+              href='mailto:ahoy@bob.contact'
+            >
+              ahoy@bob.contact
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

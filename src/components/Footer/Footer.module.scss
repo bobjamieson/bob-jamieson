@@ -1,18 +1,54 @@
+@import '/src/styles/theme.module.scss';
+
 .FooterContainer {
   margin-top: auto;
-  padding-top: 100px;
 }
 
 .Footer {
   background: black;
+  padding: 50px 0;
+  @include mq('md') {
+    min-height: 200px;
+  }
 
   &__Content {
-    min-height: 200px;
     display: flex;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 30px;
+
+    @include mq('md') {
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
     &__Logo {
       width: 100px;
       height: auto;
+      margin-bottom: 30px;
+      border: solid 2px white;
+      border-radius: $border-radius;
+    }
+
+    &__Contact {
+      color: white;
+      text-align: center;
+
+      @include mq('md') {
+        text-align: right;
+      }
+
+      &__Email {
+        border-bottom: 1px solid white;
+        padding-bottom: 5px;
+
+        &:hover {
+          border-bottom: 2px solid white;
+        }
+      }
     }
   }
 }

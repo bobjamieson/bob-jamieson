@@ -1,19 +1,16 @@
 @import '/src/styles/theme.module.scss';
 
 .Card,
-.SideBar {
+.SideBar,
+.CaseLink {
   font-family: Poppins, sans-serif;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 0.2em;
   color: white;
   text-transform: uppercase;
   border: none;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-
-  &:hover {
-    letter-spacing: 3px;
-  }
 }
 
 .SideBar {
@@ -46,5 +43,24 @@
   &:hover p {
     transition: all 500ms ease-in-out;
     color: black;
+  }
+}
+
+.CaseLink {
+  max-width: min-content;
+  display: block;
+  > div {
+    margin-bottom: 20px;
+    width: min-content;
+    border-radius: $border-radius;
+    background: black;
+    padding: 15px 20px;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      background: white !important;
+      transition: all 200ms ease-in-out;
+      color: black;
+    }
   }
 }
