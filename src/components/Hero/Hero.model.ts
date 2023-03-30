@@ -2,7 +2,7 @@ export interface ImageModel {
   data: {
     attributes: {
       url: string
-    }[]
+    }
   }
 }
 
