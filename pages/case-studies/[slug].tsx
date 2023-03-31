@@ -1,14 +1,15 @@
 import React from 'react'
-import styles from './CaseStudyPage.module.scss'
+import styles from '@/src/styles/CaseStudyPage.module.scss'
 import colorForIndex from '@/src/utils/ColorForIndex'
 import PostSideBar from '@/src/components/PostSideBar/PostSideBar.component'
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
-import { getStaticProps, getStaticPaths } from 'pages/data/CaseStudyPage.data'
 import { NextSeo } from 'next-seo'
 import { NextPage } from 'next'
-import { CaseStudyProps } from './CaseStudyPage.model'
+import { CaseStudyProps } from '../../src/types/CaseStudyPage.model'
 import Button from '@/src/components/Button/Button.component'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { GET_ALL_CASESTUDIES } from '@/graphql/queries'
 
 const CaseStudyPage: NextPage<CaseStudyProps> = (props) => {
   const currentCaseStudy = props?.caseStudies[props.currentIndex]
@@ -132,5 +133,54 @@ const CaseStudyPage: NextPage<CaseStudyProps> = (props) => {
   )
 }
 
-export { getStaticProps, getStaticPaths }
+export const getStaticProps = async ({ params }: any) => {
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_API,
+    cache: new InMemoryCache(),
+  })
+
+  const [caseStudiesResult] = await Promise.all([
+    client.query({ query: GET_ALL_CASESTUDIES }),
+  ])
+
+  const caseStudyData = caseStudiesResult?.data.casestudies.data
+
+  //determines index of the individual case study data based on slug
+  let currentIndex
+  caseStudyData.forEach((caseStudy: any, index: number) => {
+    if (caseStudy.attributes.slug === params.slug) {
+      currentIndex = index
+    }
+  })
+
+  return {
+    props: {
+      caseStudies: caseStudyData,
+      currentIndex,
+    },
+  }
+}
+
+export const getStaticPaths = async () => {
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_API,
+    cache: new InMemoryCache(),
+  })
+
+  const { data } = await client.query({
+    query: GET_ALL_CASESTUDIES,
+  })
+
+  const paths = data.casestudies.data.map((caseStudy: any) => ({
+    params: {
+      slug: caseStudy.attributes.slug,
+    },
+  }))
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
 export default CaseStudyPage

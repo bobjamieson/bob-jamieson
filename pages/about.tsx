@@ -1,9 +1,10 @@
-import styles from './About.module.scss'
+import styles from '@/src/styles/About.module.scss'
 import colorForIndex from '@/src/utils/ColorForIndex'
 import Image from 'next/image'
-import { getStaticProps } from './data/about.data'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
+import { GET_PAGE_ABOUT } from '@/graphql/queries'
 import { NextPage } from 'next'
-import { AboutProps } from './About.model'
+import { AboutProps } from '../src/types/About.model'
 import { NextSeo } from 'next-seo'
 
 const About: NextPage<AboutProps> = (props) => {
@@ -38,7 +39,7 @@ const About: NextPage<AboutProps> = (props) => {
             <ul>
               {props?.pageAbout?.attributes?.skills.map((skillObj, index) => {
                 return (
-                  <li style={{ background: colorForIndex(index) }}>
+                  <li style={{ background: colorForIndex(index) }} key={index}>
                     {skillObj.skill}
                   </li>
                 )
@@ -57,6 +58,23 @@ const About: NextPage<AboutProps> = (props) => {
   )
 }
 
-export { getStaticProps }
+export const getStaticProps = async ({ params }: any) => {
+  const client = new ApolloClient({
+    uri: process.env.STRAPI_GRAPHQL_API,
+    cache: new InMemoryCache(),
+  })
+
+  const [pageaboutResult] = await Promise.all([
+    client.query({ query: GET_PAGE_ABOUT }),
+  ])
+
+  const pageaboutData = pageaboutResult?.data?.pageabout?.data
+
+  return {
+    props: {
+      pageAbout: pageaboutData,
+    },
+  }
+}
 
 export default About
