@@ -1,10 +1,4 @@
-export interface ImageModel {
-  data: {
-    attributes: {
-      url: string
-    }
-  }[]
-}
+import { ImageModel } from './index.model'
 
 export interface CaseStudyModel {
   id: string
