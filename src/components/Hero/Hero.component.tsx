@@ -5,6 +5,7 @@ import { FunctionComponent } from 'react'
 import { HeroProps } from './Hero.model'
 
 const Hero: FunctionComponent<HeroProps> = (props) => {
+  console.log(props)
   return (
     <>
       <div className='Container'>
@@ -12,7 +13,7 @@ const Hero: FunctionComponent<HeroProps> = (props) => {
           {/* Hero image */}
           <div className={styles.HeroTop}>
             <Image
-              src={props?.attributes?.image?.data?.attributes?.url}
+              src={props?.attributes?.image?.data[0]?.attributes?.url}
               alt=''
               width='550'
               height='384'

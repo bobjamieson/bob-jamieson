@@ -1,10 +1,4 @@
-export interface ImageModel {
-  data: {
-    attributes: {
-      url: string
-    }
-  }
-}
+import { ImageModel } from '@/src/types/index.model'
 
 export interface HeroProps {
   attributes: {
