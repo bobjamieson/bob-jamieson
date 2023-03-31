@@ -28,13 +28,7 @@ export interface HeroModel {
   attributes: {
     title: string
     subtitle: string
-    image: {
-      data: {
-        attributes: {
-          url: string
-        }
-      }
-    }
+    image: ImageModel
   }
 }
 
