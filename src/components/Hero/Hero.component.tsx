@@ -15,8 +15,8 @@ const Hero: FunctionComponent<HeroProps> = (props) => {
             <Image
               src={props?.attributes?.image?.data[0]?.attributes?.url}
               alt=''
-              width='550'
-              height='384'
+              width='747'
+              height='522'
               className={styles.HeroTop__Image}
               priority
             />

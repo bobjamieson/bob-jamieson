@@ -34,8 +34,12 @@
 
 .Line {
   border-bottom: 2px solid $line-purple;
-  margin-top: -4.6%;
+  margin-top: -4.3%;
   animation: lineExpand 1s normal forwards ease;
+
+  @include mq('sm') {
+    margin-top: -4.1%;
+  }
 
   @include mq('md') {
     margin-top: -1.75em;
