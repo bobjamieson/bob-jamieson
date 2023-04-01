@@ -12,6 +12,7 @@ const Button: FunctionComponent<ButtonProps> = ({
     <Link
       href={link.href}
       as={link.as}
+      target={variant === 'caseLink' ? '_blank' : undefined}
       className={
         variant === 'card'
           ? styles.Card
