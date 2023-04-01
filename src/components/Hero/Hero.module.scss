@@ -1,6 +1,8 @@
 @import 'src/styles/theme.module.scss';
 
 .HeroTop {
+  display: flex;
+  justify-content: center;
   &__Container {
     height: 45vh;
     height: 45svh;
@@ -34,15 +36,15 @@
 
 .Line {
   border-bottom: 2px solid $line-purple;
-  margin-top: -4.5%;
+  margin-top: -3.5%;
   animation: lineExpand 1s normal forwards ease;
 
   @include mq('sm') {
-    margin-top: -4.1%;
+    margin-top: -3.7%;
   }
 
   @include mq('md') {
-    margin-top: -1.75em;
+    margin-top: -1.5em;
   }
 }
 
