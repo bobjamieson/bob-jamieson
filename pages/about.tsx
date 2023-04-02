@@ -15,7 +15,7 @@ const About: NextPage<AboutProps> = (props) => {
         description={props.pageAbout?.attributes?.metadescription}
       />
 
-      <main className={`${styles.AboutContainer} Container`}>
+      <div className={`${styles.AboutContainer} Container`}>
         <div className={styles.About__Header}>
           <Image
             src='/images/bob-photo.jpg'
@@ -31,9 +31,9 @@ const About: NextPage<AboutProps> = (props) => {
             </h1>
           </div>
         </div>
-
-        <hr className={styles.Line} />
-
+      </div>
+      <hr className={styles.Line} />
+      <div className={`${styles.AboutContainer} Container`}>
         <div className={styles.About__Content}>
           <div className={`${styles.About__Skills} Tags P__Tags`}>
             <ul>
@@ -53,7 +53,7 @@ const About: NextPage<AboutProps> = (props) => {
             }}
           />
         </div>
-      </main>
+      </div>
     </>
   )
 }

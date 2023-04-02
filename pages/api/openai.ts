@@ -90,8 +90,6 @@ export default async function handler(
   
   Q: What are you qualifications?
   A: I have an Advanced Diploma in Screen and Media and have completed numerous CodeCademy courses including Advanced JavaScript, React, HTML and CSS.
-
-${question}
   `
 
   // Call the OpenAI API with the question and the prompts

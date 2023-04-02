@@ -32,7 +32,7 @@ const PrimaryNav = () => {
     )
   }
 
-  // Stores menu items
+  // Holds array of menu item objects
   const menuItems = [
     {
       id: 'case-studies',
@@ -41,7 +41,7 @@ const PrimaryNav = () => {
     },
     { id: 'about', text: 'About', href: '/about' },
     { id: 'github', text: 'GitHub', href: 'https://github.com/bobjamieson' },
-    { id: 'contact', text: 'Contact', href: '#Contact' },
+    { id: 'contact', text: 'Contact', href: 'mailto: ahoy@bob.contact' },
   ]
 
   return (

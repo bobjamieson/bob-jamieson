@@ -2,14 +2,10 @@
 
 .Line {
   border-top: 2px solid black;
-  height: 0;
-  min-width: 100vw;
-  margin-left: calc((100% - 100vw) / 2);
-  left: 0;
-  right: 0;
   z-index: -1;
   margin-top: 20px;
   margin-bottom: 100px;
+  animation: lineExpand 1s normal forwards ease;
 
   @include mq('sm') {
     margin-top: -30px;
@@ -23,6 +19,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    opacity: 0;
+    animation: fadeInFromLeft 1.5s normal forwards ease 800ms;
 
     @include mq('sm') {
       flex-direction: row;
@@ -45,6 +43,8 @@
   &__Content {
     margin: 0 auto;
     max-width: $content-width;
+    opacity: 0;
+    animation: fadeInFromBottom 1.5s normal forwards ease 1400ms;
 
     p {
       @extend .P;

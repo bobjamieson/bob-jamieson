@@ -5,6 +5,8 @@
   margin-bottom: 200px;
   margin-top: -150px;
   padding-top: 150px;
+  opacity: 0;
+  animation: fadeOutToBottom 0.5s ease-in-out forwards;
 
   @include mq('sm') {
     padding: 0 50px;
@@ -18,12 +20,26 @@
     min-width: $content-width;
     margin: -150px auto 200px auto;
   }
+
+  &__Scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInFromBottom 0.5s ease-in-out forwards;
+  }
 }
 
 .CaseStudy {
   margin-bottom: 100px;
   position: relative;
   cursor: pointer;
+  transition: 200ms ease-in-out;
+
+  &__Title {
+    &:hover {
+      letter-spacing: 2px;
+      transition: 200ms ease-in-out;
+    }
+  }
 
   &__Line {
     border-top: 2px solid black;
@@ -44,14 +60,14 @@
 
   &__Box {
     width: 20px;
+    height: auto;
     max-height: 20px;
     margin-top: -12px;
     position: relative;
     right: 0;
     border-radius: $border-radius;
     overflow: hidden;
-    box-sizing: border-box;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    box-shadow: $box-shadow;
     transition: max-height 0.4s ease-in-out 0s, width 0.4s ease-in-out 0.4s;
 
     &__Active {

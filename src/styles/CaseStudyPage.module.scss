@@ -18,6 +18,8 @@
   &__Header {
     position: relative;
     margin: 0 auto 100px auto;
+    opacity: 0;
+    animation: fadeInFromLeft 1.5s normal forwards ease 800ms;
     @include mq('sm') {
       transition: all 0.2s ease-in-out;
     }
@@ -87,12 +89,15 @@
       left: 0;
       right: 0;
       z-index: -1;
+      animation: lineExpand 1s normal forwards ease;
     }
   }
 
   &__Body {
     margin-bottom: 150px;
     width: 100%;
+    opacity: 0;
+    animation: fadeInFromBottom 1.5s normal forwards ease 1400ms;
     @include mq('md') {
       max-width: $content-width;
       margin: 0 auto 50px auto;

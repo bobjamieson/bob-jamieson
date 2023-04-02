@@ -37,6 +37,10 @@
   @include mq('sm') {
     width: 50px;
   }
+
+  &:hover {
+    box-shadow: $box-shadow;
+  }
 }
 
 .Nav {

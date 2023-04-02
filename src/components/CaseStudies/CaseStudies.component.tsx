@@ -3,6 +3,8 @@ import colorForIndex from '../../utils/ColorForIndex'
 import Button from '../Button/Button.component'
 import { FunctionComponent, useRef, useState } from 'react'
 import { CaseStudyProps } from './CaseStudies.model'
+import { isBrowser } from '@/src/utils/isBrowser'
+import { useEffect } from 'react'
 
 const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
   const [activeIndex, setActiveIndex] = useState(-1)
@@ -10,16 +12,22 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
   const caseStudyRefs = useRef<(HTMLElement | null)[]>([])
 
   const scrollIntoViewport = (index: number) => {
-    if (index !== activeIndex) {
-      setTimeout(() => {
-        const element = caseStudyRefs.current[index]
-        if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-          })
+    if (isBrowser()) {
+      const breakpoint = window.matchMedia('(max-width: 768px)')
+
+      if (breakpoint.matches) {
+        if (index !== activeIndex) {
+          setTimeout(() => {
+            const element = caseStudyRefs.current[index]
+            if (element) {
+              element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+              })
+            }
+          }, 650)
         }
-      }, 650)
+      }
     }
   }
 
@@ -28,8 +36,29 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
     scrollIntoViewport(index)
   }
 
+  const [scrolledPastTop, setScrolledPastTop] = useState(false)
+  // On scroll, case studies section fade in from the bottom
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 20) {
+        setScrolledPastTop(true)
+      } else {
+        setScrolledPastTop(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <div className={styles.CaseStudies} id='CaseStudies'>
+    <div
+      className={`${styles.CaseStudies} ${
+        scrolledPastTop ? styles.CaseStudies__Scroll : ''
+      }`}
+      id='CaseStudies'
+    >
       {props?.caseStudies?.map((caseStudy, index) => (
         <article
           className={styles.CaseStudy}
@@ -43,7 +72,9 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
           </p>
           {/* Case Study Title */}
           <p
-            className={`H2 ${activeIndex === index ? styles.ActiveTitle : ''}`}
+            className={`H2 ${styles.CaseStudy__Title} ${
+              activeIndex === index ? styles.ActiveTitle : ''
+            }`}
           >
             {caseStudy?.attributes?.title}
           </p>
