@@ -59,6 +59,9 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
       }`}
       id='CaseStudies'
     >
+      {/*
+       * Maps over case studies and returns a card article
+       */}
       {props?.caseStudies?.map((caseStudy, index) => (
         <article
           className={styles.CaseStudy}
@@ -66,7 +69,10 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
           key={index}
           onClick={() => handleClick(index)}
         >
-          {/* Case Study Number is based on case study index + 1 (start at 1 instead of 0) */}
+          {/*
+           * Case Study Number is based on case study index + 1
+           * (start at 1 instead of 0)
+           */}
           <p className='SubTitle' style={{ color: colorForIndex(index) }}>
             {`Case study ${index >= 10 ? '0' : '00'}${index + 1}`}
           </p>
