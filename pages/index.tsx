@@ -1,6 +1,5 @@
 import Hero from '@/src/components/Hero/Hero.component'
 import CaseStudies from '@/src/components/CaseStudies/CaseStudies.component'
-import ChatBox from '@/src/components/ChatBox/ChatBox.component'
 import React from 'react'
 import { HomeProps } from '../src/types/index.model'
 import { NextPage } from 'next'
@@ -28,8 +27,6 @@ const Home: NextPage<HomeProps> = (props) => {
             currentIndex={props.caseStudies[0].currentIndex}
           />
         )}
-
-        <ChatBox {...props.chatBox} />
       </main>
     </>
   )
