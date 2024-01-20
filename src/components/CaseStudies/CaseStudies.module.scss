@@ -1,12 +1,14 @@
 @import '/src/styles/theme.module.scss';
 
 .CaseStudies {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+
   padding: 0 30px;
   margin-bottom: 200px;
   margin-top: -150px;
   padding-top: 150px;
-  opacity: 0;
-  animation: fadeOutToBottom 0.5s ease-in-out forwards;
 
   @include mq('sm') {
     padding: 0 50px;
@@ -22,9 +24,9 @@
   }
 
   &__Scroll {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInFromBottom 0.5s ease-in-out forwards;
+    opacity: 1; /* Initial opacity for the scrolling state */
+    transform: translateY(0);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
   }
 }
 

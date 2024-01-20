@@ -1,16 +1,18 @@
 import styles from './CaseStudies.module.scss'
 import colorForIndex from '../../utils/ColorForIndex'
 import Button from '../Button/Button.component'
-import { FunctionComponent, useRef, useState } from 'react'
+import { FunctionComponent, useRef, useState, useEffect } from 'react'
 import { CaseStudyProps } from './CaseStudies.model'
 import { isBrowser } from '@/src/utils/isBrowser'
-import { useEffect } from 'react'
 
 const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
+  // State to track the active index of case studies
   const [activeIndex, setActiveIndex] = useState(-1)
-
+  // State to track whether the user has scrolled past the top
+  const [scrolledPastTop, setScrolledPastTop] = useState(false)
   const caseStudyRefs = useRef<(HTMLElement | null)[]>([])
 
+  // Function to scroll a specific case study into the viewport
   const scrollIntoViewport = (index: number) => {
     if (isBrowser()) {
       const breakpoint = window.matchMedia('(max-width: 768px)')
@@ -31,18 +33,18 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
     }
   }
 
+  // Function to handle click events on case study elements
   const handleClick = (index: number) => {
     setActiveIndex(index === activeIndex ? -1 : index)
     scrollIntoViewport(index)
   }
 
-  const [scrolledPastTop, setScrolledPastTop] = useState(false)
-  // On scroll, case studies section fade in from the bottom
+  // Handles scroll events and control the fade-in and fade-out of the case studies section
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 20) {
+      if (window.scrollY > 20 && !scrolledPastTop) {
         setScrolledPastTop(true)
-      } else {
+      } else if (window.scrollY <= 20 && scrolledPastTop) {
         setScrolledPastTop(false)
       }
     }
@@ -50,7 +52,7 @@ const CaseStudies: FunctionComponent<CaseStudyProps> = (props) => {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [scrolledPastTop])
 
   return (
     <div
